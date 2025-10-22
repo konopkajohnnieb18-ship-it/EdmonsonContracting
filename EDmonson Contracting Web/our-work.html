@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Our Work | Edmonson Contracting LLC — Fences, Decks, Pergolas, Patios, Docks</title>
+    <meta name="description" content="See Edmonson Contracting projects across Molino, Pensacola & Escambia County: straight fence lines, rock-solid decks, shade pergolas, patios and waterfront work. Photos, materials, and case studies." />
+    <link rel="canonical" href="https://www.edmonsoncontracting.com/our-work.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Our Work — Edmonson Contracting LLC" />
+    <meta property="og:description" content="Gallery and case studies: fences, decks, pergolas, patios and docks built strong for Florida weather." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/og-hero.jpg" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root{
+        --ink:#0a0a0b;--ink2:#0f1012;--text:#fff;
+        --red:#b30000;--red2:#e11d48;--ring:rgba(225,29,72,.4);
+      }
+
+      /* ====== GLOBAL LAYOUT SAFEGUARDS (fix horizontal drag/scroll) ====== */
+      *,*::before,*::after{box-sizing:border-box}
+      html,body{max-width:100%; overflow-x:hidden;} /* <- hard clamp */
+      /* clip any accidental overflow from full-bleed sections */
+      header,footer,.hero,.panel,.panel-dark{overflow-x:clip}
+      /* canvases/images as block to avoid inline gaps pushing layout */
+      canvas,img{display:block}
+
+      html{scroll-behavior:smooth}
+      body{background:var(--ink);color:var(--text)}
+      header,main,footer{position:relative;z-index:1}
+
+      /* global floating dots behind everything */
+      #floaters{position:fixed;inset:0;z-index:0;opacity:.5;pointer-events:none}
+
+      .font-display{font-family:"Bebas Neue",system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+      .font-sans{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+      .red{color:var(--red2)}
+
+      /* Buttons */
+      .btn{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.3rem;font-weight:800;border-radius:.5rem;transition:.2s;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08)}
+      .btn:hover{transform:translateY(-1px)}
+      .btn-primary{color:#fff;background:linear-gradient(180deg,var(--red2),var(--red));box-shadow:0 10px 24px rgba(179,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(0,0,0,.5)}
+      .btn-ghost{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+      .btn-ghost:hover{background:rgba(255,255,255,.14)}
+      .btn-magnetic{will-change:transform;transition:transform .08s ease}
+
+      /* Nav */
+      .nav-link{position:relative}
+      .nav-link::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--red),var(--red2));transition:width .25s}
+      .nav-link:hover::after{width:100%}
+
+      /* Hero (NO IMAGE) */
+      .hero{
+        position:relative;min-height:56vh;overflow:hidden;
+        background:
+          radial-gradient(1200px 600px at 20% 20%, rgba(225,29,72,.12), transparent 60%),
+          radial-gradient(900px 500px at 80% 60%, rgba(225,29,72,.08), transparent 60%),
+          #000;
+      }
+      .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.24),rgba(0,0,0,.72) 58%, rgba(10,10,11,.9))}
+      .sparks{position:absolute;inset:0;pointer-events:none;opacity:.32}
+
+      /* Panels + cards */
+      .panel{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.25))}
+      .panel-dark{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(0,0,0,.35))}
+      .rail{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
+      .card{position:relative;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.25));border-radius:1rem;box-shadow:0 12px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
+      .card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--red),var(--red2))}
+      .section-h2{font-family:"Bebas Neue";letter-spacing:.02em;font-size:clamp(2.25rem,4vw,3.25rem);color:var(--red2)}
+      .kicker{text-transform:uppercase;letter-spacing:.18em;font-weight:800;font-size:.72rem;color:rgba(255,255,255,.75)}
+      .lead{color:rgba(255,255,255,.85);font-size:1.1rem}
+
+      /* Filter pills */
+      .pill{padding:.55rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-weight:700}
+      .pill.active{background:linear-gradient(180deg,var(--red2),var(--red));border-color:transparent}
+
+      /* Lightbox */
+      .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:70}
+      .lightbox.open{display:flex}
+      .lightbox img{max-width:92vw;max-height:86vh;border-radius:.75rem}
+      .lightbox .close,.lightbox .prev,.lightbox .next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);padding:.6rem .8rem;border-radius:.5rem}
+      .lightbox .close{top:6%;right:4%;transform:none}
+      .lightbox .prev{left:3%}
+      .lightbox .next{right:3%}
+
+      /* Before/After slider */
+      .ba{position:relative;overflow:hidden;border-radius:1rem;touch-action:none}
+      .ba img{display:block;width:100%;height:100%;object-fit:cover;user-select:none;pointer-events:none}
+      .ba .after{position:absolute;inset:0;clip-path:inset(0 0 0 50%)}
+      .ba .handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff}
+      .ba .dot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:var(--red2);box-shadow:0 0 0 4px rgba(225,29,72,.35)}
+
+      /* Reveal */
+      .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+      .reveal.is-in{opacity:1;transform:none}
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <!-- global floating dots -->
+    <canvas id="floaters"></canvas>
+
+    <!-- Header -->
+    <header class="fixed inset-x-0 top-0 z-50">
+      <div class="bg-black/80 md:bg-black/60 backdrop-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <a href="/" class="flex items-center gap-3" aria-label="Edmonson Contracting LLC home">
+            <img src="/img/EDLOGO.png" alt="Edmonson Contracting logo" class="h-10 w-auto" />
+            <span class="font-display tracking-wide text-2xl leading-none">EDMONSON <span class="text-[var(--red2)]">CONTRACTING</span></span>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-8" aria-label="Primary">
+            <a href="/" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Home</a>
+            <a href="/services.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Services</a>
+            <a href="/our-work.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Our Work</a>
+            <a href="/#quote" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Contact</a>
+            <a href="/#quote" class="btn btn-primary btn-magnetic">Free Quote</a>
+          </nav>
+
+          <button id="menuBtn" class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border border-white/15" aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+
+        <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-black/90 backdrop-blur">
+          <div class="px-4 py-4 space-y-2 text-lg">
+            <a href="/" class="block py-2 text-[var(--red2)] hover:text-white">Home</a>
+            <a href="/services.html" class="block py-2 text-[var(--red2)] hover:text-white">Services</a>
+            <a href="/our-work.html" class="block py-2 text-[var(--red2)] hover:text-white">Our Work</a>
+            <a href="/#quote" class="block py-2 text-[var(--red2)] hover:text-white">Contact</a>
+            <a href="/#quote" class="btn btn-primary w-full text-center mt-2">Get a Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" role="main">
+      <!-- Hero (no photo, just sparks + gradients) -->
+      <section class="hero">
+        <canvas id="sparks" class="sparks"></canvas>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32 pb-12">
+          <div class="max-w-3xl">
+            <p class="kicker">Gallery • Case Studies • Proof</p>
+            <h1 class="font-display text-5xl sm:text-6xl leading-[0.95] tracking-wide mt-2">
+              OUR WORK IN <span class="red">NORTHWEST FLORIDA</span>.
+            </h1>
+            <p class="mt-4 text-white/85 text-lg">
+              Real projects across <span class="red">Molino</span>, <span class="red">Pensacola</span>, and Escambia County—straight fence lines, rock-solid decks, tidy job sites.
+            </p>
+            <div class="mt-7 flex flex-col sm:flex-row gap-4">
+              <a href="/#quote" class="btn btn-primary btn-magnetic">Start Your Quote</a>
+              <a href="#ba-top" class="btn btn-ghost">See Before/After</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Before/After (uses img/1.jpg and img/2.jpg) -->
+      <section class="py-12 md:py-16 panel-dark">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2">Before & <span class="red">After</span></h2>
+          <p class="text-white/80 mt-2">Drag—or just move across—to reveal the result.</p>
+
+          <div class="mt-6 ba reveal" id="ba-top" style="height:380px">
+            <img src="/img/1.jpg" alt="Before" />
+            <img class="after" src="/img/2.jpg" alt="After" />
+            <div class="handle"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="rail mt-12"></div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="py-16 md:py-24 panel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2 reveal">Project <span class="red">Gallery</span></h2>
+          <p class="mt-2 text-white/80 reveal">Browse by type. Tap any photo to open the lightbox.</p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            <button class="pill active" data-filter="all">All</button>
+            <button class="pill" data-filter="fence">Fences</button>
+            <button class="pill" data-filter="deck">Decks</button>
+            <button class="pill" data-filter="pergola">Pergolas & Patios</button>
+            <button class="pill" data-filter="dock">Docks</button>
+            <button class="pill" data-filter="repair">Repairs</button>
+          </div>
+
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid">
+            <!-- your .webp images -->
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2916.webp" alt="Privacy fence run" />
+              <figcaption class="p-3 text-sm text-white/80">Privacy fence — straight alignment</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2918.webp" alt="Long fence section" />
+              <figcaption class="p-3 text-sm text-white/80">Long privacy run — tidy spacing</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2915.webp" alt="Porch/stairs detail" />
+              <figcaption class="p-3 text-sm text-white/80">Porch access — clean edges</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="deck">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2577.webp" alt="Deck and porch" />
+              <figcaption class="p-3 text-sm text-white/80">Deck/porch combo — uniform boards</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="deck">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2332.webp" alt="Deck surface" />
+              <figcaption class="p-3 text-sm text-white/80">Deck surface — clean miters</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="pergola">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2917.webp" alt="Pergola structure" />
+              <figcaption class="p-3 text-sm text-white/80">Pergola shade — sun-path slats</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="pergola">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2579.webp" alt="Patio steps" />
+              <figcaption class="p-3 text-sm text-white/80">Patio steps — neat transitions</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="repair">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2922.webp" alt="Gate hardware upgrade" />
+              <figcaption class="p-3 text-sm text-white/80">Gate re-hang & hardware upgrade</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2458.webp" alt="Site prep" />
+              <figcaption class="p-3 text-sm text-white/80">Site prep — organized materials</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2567.webp" alt="Gate alignment" />
+              <figcaption class="p-3 text-sm text-white/80">Gate alignment — square & true</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2568.webp" alt="Handrail detail" />
+              <figcaption class="p-3 text-sm text-white/80">Handrail detail — safe access</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="dock">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_5479.webp" alt="Waterfront" />
+              <figcaption class="p-3 text-sm text-white/80">Waterfront details — corrosion-ready</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_1925.webp" alt="Slope run" />
+              <figcaption class="p-3 text-sm text-white/80">Slope solution — stepped panels</figcaption>
+            </figure>
+
+            <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="pergola">
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2910.webp" alt="Covered patio" />
+              <figcaption class="p-3 text-sm text-white/80">Covered patio — all-weather use</figcaption>
+            </figure>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="/#quote" class="btn btn-primary btn-magnetic">Like what you see? Get a Free Quote</a>
+          </div>
+        </div>
+        <div class="rail mt-16"></div>
+      </section>
+
+      <!-- Case Studies -->
+      <section class="py-16 md:py-24 panel-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2 reveal">Recent <span class="red">Case Studies</span></h2>
+
+          <article class="mt-8 grid lg:grid-cols-2 gap-8 items-start card p-6 reveal">
+            <div class="space-y-3">
+              <h3 class="text-2xl font-semibold">Privacy Fence with Cap & Gate Upgrade — Molino, FL</h3>
+              <p class="text-white/80">Homeowner wanted <span class="red">privacy</span> and a straight line down a sloped yard. We set posts deeper than minimum, used corrosion-resistant fasteners, and finished with a clean cap & trim profile. Gate got upgraded hinges and latch to prevent sagging.</p>
+              <ul class="text-white/80 text-sm space-y-1">
+                <li>• Material: PT pine, concrete footings</li>
+                <li>• Length: ~180 ft • Height: 6 ft</li>
+                <li>• Turnaround: 2 days on site</li>
+              </ul>
+              <a href="/#quote" class="btn btn-primary btn-magnetic">Get a Fence Quote</a>
+            </div>
+            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2916.webp" alt="Cap & trim privacy fence" />
+          </article>
+
+          <article class="mt-8 grid lg:grid-cols-2 gap-8 items-start card p-6 reveal">
+            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2577.webp" alt="Deck boards close-up" />
+            <div class="space-y-3">
+              <h3 class="text-2xl font-semibold">Low-Maintenance Deck Upgrade — Pensacola, FL</h3>
+              <p class="text-white/80">Replaced an aging wood platform with upgraded materials. Hidden fasteners, proper spacing, and stair lighting make it feel solid underfoot and safer at night.</p>
+              <ul class="text-white/80 text-sm space-y-1">
+                <li>• Composite/treated boards, aluminum rail</li>
+                <li>• Features: Hidden fasteners, step lighting</li>
+                <li>• Turnaround: 3 days on site</li>
+              </ul>
+              <a href="/#quote" class="btn btn-primary btn-magnetic">Get a Deck Quote</a>
+            </div>
+          </article>
+
+          <article class="mt-8 grid lg:grid-cols-2 gap-8 items-start card p-6 reveal">
+            <div class="space-y-3">
+              <h3 class="text-2xl font-semibold">Pergola & Patio with Drainage — Beulah, FL</h3>
+              <p class="text-white/80">We set slat angles to match the sun path for afternoon shade and graded the base for <span class="red">proper drainage</span>. Privacy screen + low-voltage lighting finish the space.</p>
+              <ul class="text-white/80 text-sm space-y-1">
+                <li>• Pavers on compacted base, polymeric sand</li>
+                <li>• Pergola with metal accents</li>
+                <li>• Turnaround: 3–4 days</li>
+              </ul>
+              <a href="/#quote" class="btn btn-primary btn-magnetic">Get a Pergola/Patio Quote</a>
+            </div>
+            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2917.webp" alt="Pergola over patio with lighting" />
+          </article>
+        </div>
+        <div class="rail mt-16"></div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="py-16 md:py-20 panel text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2 reveal">Built Strong. Built <span class="red">Right</span>. Every Time.</h2>
+          <p class="mt-3 lead">Call or text <a class="underline hover:text-white" href="tel:+18502072412">(850) 207-2412</a> — or click below.</p>
+          <div class="mt-6"><a href="/#quote" class="btn btn-primary btn-magnetic">Request a Free Quote</a></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-[var(--red2)]/30">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8" aria-label="Footer">
+        <div>
+          <img src="/images/logo-light.png" alt="Edmonson Contracting logo" class="h-9 w-auto" />
+          <address class="not-italic text-[var(--red2)]/80 mt-3">7309 Brickyard Rd<br />Molino, FL 32577</address>
+          <p class="text-[var(--red2)]/80 mt-1">Hours: 7am–7pm daily</p>
+          <p class="mt-2"><a href="tel:+18502072412" class="hover:text-[var(--red)] text-[var(--red2)]">(850) 207-2412</a></p>
+          <p><a href="mailto:Edmonsoncontractingllc@gmail.com" class="hover:text-[var(--red)] text-[var(--red2)]">Edmonsoncontractingllc@gmail.com</a></p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-[var(--red2)]">Company</h3>
+          <ul class="mt-3 space-y-1 text-[var(--red2)]/85">
+            <li><a href="/" class="hover:text-[var(--red)]">Home</a></li>
+            <li><a href="/services.html" class="hover:text-[var(--red)]">Services</a></li>
+            <li><a href="/our-work.html" class="hover:text-[var(--red)]">Our Work</a></li>
+            <li><a href="/#quote" class="hover:text-[var(--red)]">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-[var(--red2)]">Service Area</h3>
+          <ul class="mt-3 space-y-1 text-[var(--red2)]/85">
+            <li>Molino & Cantonment</li>
+            <li>Pensacola, Beulah</li>
+            <li>Pace, Milton, Gulf Breeze</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-[var(--red2)]">Social</h3>
+          <ul class="mt-3 space-y-1 text-[var(--red2)]/85">
+            <li><a href="https://www.facebook.com/" class="hover:text-[var(--red)]">Facebook</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="border-t border-[var(--red2)]/30 text-center py-5 text-sm">
+        <span class="text-[var(--red2)]/70">© <span id="y"></span> Edmonson Contracting LLC • Built by <span class="text-[var(--red2)]">Boosted Digital Marketing Solutions</span></span>
+      </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <button class="close" aria-label="Close">✕</button>
+      <button class="prev" aria-label="Previous">‹</button>
+      <img alt="Gallery image" />
+      <button class="next" aria-label="Next">›</button>
+    </div>
+
+    <!-- JS -->
+    <script>
+      // Year
+      const y=document.getElementById("y"); if(y) y.textContent=new Date().getFullYear();
+
+      // Mobile nav
+      const btn=document.getElementById("menuBtn"), nav=document.getElementById("mobileNav");
+      if(btn&&nav){btn.addEventListener("click",()=>{const ex=btn.getAttribute("aria-expanded")==="true";btn.setAttribute("aria-expanded",!ex);nav.classList.toggle("hidden");});}
+
+      // Reveal
+      const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target);}})},{threshold:.12});
+      document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+      // Magnetic
+      document.querySelectorAll(".btn-magnetic").forEach(b=>{
+        const r=20;
+        b.addEventListener("mousemove",e=>{
+          const m=b.getBoundingClientRect();
+          const x=((e.clientX-(m.left+m.width/2))/(m.width/2))*r;
+          const y=((e.clientY-(m.top+m.height/2))/(m.height/2))*r;
+          b.style.transform=`translate(${x*.1}px,${y*.1}px)`;
+        });
+        b.addEventListener("mouseleave",()=>b.style.transform="translate(0,0)");
+      });
+
+      // HERO sparks
+      (function(){
+        const c=document.getElementById("sparks"); if(!c) return;
+        const ctx=c.getContext("2d"); let W,H,parts=[]; const R=Math.random;
+        function size(){W=c.width=window.innerWidth; H=c.height=document.querySelector(".hero").offsetHeight;}
+        function seed(){const COUNT=Math.round(Math.min(70,Math.max(28,(W*H)/50000)));
+          parts=Array.from({length:COUNT},()=>({x:R()*W,y:R()*H,vx:(R()-.5)*.06,vy:-(.15+R()*.35),r:.6+R()*1.4,a:.28+R()*.32}));
+        }
+        function step(){
+          ctx.clearRect(0,0,W,H);
+          for(const p of parts){
+            p.x+=p.vx; p.y+=p.vy;
+            if(p.y<-12||p.x<-12||p.x>W+12){p.x=R()*W; p.y=H+12;}
+            const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*9);
+            g.addColorStop(0,`rgba(225,29,72,${p.a})`); g.addColorStop(1,"rgba(225,29,72,0)");
+            ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*9,0,Math.PI*2); ctx.fill();
+          }
+          requestAnimationFrame(step);
+        }
+        window.addEventListener("resize",()=>{size(); seed();});
+        size(); seed(); step();
+      })();
+
+      // GLOBAL floaters
+      (function(){
+        const canvas=document.getElementById("floaters"); if(!canvas) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const ctx=canvas.getContext("2d"); let W=0,H=0,parts=[]; const R=Math.random;
+        function resize(){W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; seed(true);}
+        function seed(seedAnywhere=false){
+          const COUNT=Math.round(Math.min(70,Math.max(30,(W*H)/50000)));
+          parts=Array.from({length:COUNT},()=>({x:R()*W,y:seedAnywhere?R()*H:H+12,vx:(R()-.5)*.06,vy:-(.14+R()*.3),r:.6+R()*1.4,a:.25+R()*.35}));
+        }
+        function step(){
+          ctx.clearRect(0,0,W,H);
+          for(const p of parts){
+            p.x+=p.vx; p.y+=p.vy;
+            if(p.y<-14||p.x<-14||p.x>W+14){p.x=R()*W; p.y=H+14; p.vx=(R()-.5)*.06; p.vy=-(.14+R()*.3);}
+            const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*9);
+            g.addColorStop(0,`rgba(225,29,72,${p.a})`); g.addColorStop(1,"rgba(225,29,72,0)");
+            ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*9,0,Math.PI*2); ctx.fill();
+          }
+          requestAnimationFrame(step);
+        }
+        window.addEventListener("resize",resize); resize(); step();
+      })();
+
+      // Filters
+      const pills=[...document.querySelectorAll(".pill")];
+      const cards=[...document.querySelectorAll("#grid [data-cat]")];
+      pills.forEach(p=>p.addEventListener("click",()=>{
+        pills.forEach(x=>x.classList.remove("active"));
+        p.classList.add("active");
+        const f=p.dataset.filter;
+        cards.forEach(card=>{const on=(f==="all"||card.dataset.cat.includes(f)); card.style.display=on?"block":"none";});
+      }));
+
+      // Lightbox
+      const lb=document.getElementById("lightbox"), lbImg=lb.querySelector("img");
+      const closeBtn=lb.querySelector(".close"), prevBtn=lb.querySelector(".prev"), nextBtn=lb.querySelector(".next");
+      let images=[...document.querySelectorAll("#grid img")].map(i=>i.src), idx=0;
+      document.getElementById("grid").addEventListener("click",e=>{
+        const img=e.target.closest("img"); if(!img) return;
+        idx=images.indexOf(img.src); openLB();
+      });
+      function openLB(){lbImg.src=images[idx]; lb.classList.add("open"); lb.setAttribute("aria-hidden","false");}
+      function closeLB(){lb.classList.remove("open"); lb.setAttribute("aria-hidden","true");}
+      function prev(){idx=(idx-1+images.length)%images.length; lbImg.src=images[idx];}
+      function next(){idx=(idx+1)%images.length; lbImg.src=images[idx];}
+      closeBtn.addEventListener("click",closeLB); prevBtn.addEventListener("click",prev); nextBtn.addEventListener("click",next);
+      document.addEventListener("keydown",e=>{if(!lb.classList.contains("open")) return; if(e.key==="Escape") closeLB(); if(e.key==="ArrowLeft") prev(); if(e.key==="ArrowRight") next();});
+
+      // Before/After slider — drag OR simple hover-move support
+      function attachBA(id){
+        const wrap=document.getElementById(id); if(!wrap) return;
+        const after=wrap.querySelector(".after"); const handle=wrap.querySelector(".handle"); const dot=wrap.querySelector(".dot");
+        function set(x){
+          const r=wrap.getBoundingClientRect();
+          const p=Math.min(1,Math.max(0,(x-r.left)/r.width));
+          after.style.clipPath=`inset(0 0 0 ${p*100}%)`;
+          handle.style.left=dot.style.left=`${p*100}%`;
+        }
+        let down=false;
+        const move=e=>{const x = e.touches ? e.touches[0].clientX : e.clientX; set(x);}
+        wrap.addEventListener("pointerdown",e=>{down=true; move(e); wrap.setPointerCapture(e.pointerId);});
+        wrap.addEventListener("pointermove",e=>{if(down) move(e);});
+        wrap.addEventListener("pointerup",()=>down=false);
+        // also update on simple hover/move for desktop
+        wrap.addEventListener("mousemove",e=>{if(!down) move(e);});
+        // center on load & on resize
+        const center=()=>set(wrap.getBoundingClientRect().left + wrap.clientWidth/2);
+        window.addEventListener("resize",center); center();
+      }
+      attachBA("ba-top");
+    </script>
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"CollectionPage","name":"Our Work - Edmonson Contracting LLC","url":"https://www.edmonsoncontracting.com/our-work.html","about":["Fences","Decks","Pergolas","Patios","Docks"],"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.edmonsoncontracting.com/"},{"@type":"ListItem","position":2,"name":"Our Work","item":"https://www.edmonsoncontracting.com/our-work.html"}]},"hasPart":[{"@type":"ImageGallery","name":"Project Gallery"}]}
+    </script>
+  </body>
+</html>

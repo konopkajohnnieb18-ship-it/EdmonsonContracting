@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Services | Edmonson Contracting LLC — Fences, Decks, Pergolas, Patios, Docks
+    </title>
+    <meta
+      name="description"
+      content="Fences, decks, pergolas, patios, and docks for Molino, Pensacola & Escambia County, FL. Precision builds, coastal-ready hardware, clean job sites. Get a fast free quote."
+    />
+    <link rel="canonical" href="https://www.edmonsoncontracting.com/services.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Edmonson Contracting LLC — Services" />
+    <meta
+      property="og:description"
+      content="Custom fences, decks, pergolas, patios, and docks built to handle Florida weather. Request a fast free quote."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/og-hero.jpg" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root {
+        --ink: #0a0a0b;
+        --ink2: #0f1012;
+        --text: #fff;
+        --red: #b30000;
+        --red2: #e11d48; /* match homepage */
+        --ring: rgba(225, 29, 72, 0.4);
+      }
+      html { scroll-behavior: smooth; }
+      body { background: var(--ink); color: var(--text); }
+
+      /* keep content above the global background canvas */
+      header, main, footer { position: relative; z-index: 1; }
+
+      /* site-wide floating dots canvas (behind everything) — MATCH HOMEPAGE */
+      #floaters {
+        position: fixed; inset: 0; z-index: 0;
+        opacity: 0.5; /* matches home */
+        pointer-events: none;
+      }
+
+      .font-display {
+        font-family: "Bebas Neue", system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      }
+      .font-sans {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+      .red { color: var(--red2); }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        padding: 0.9rem 1.3rem; font-weight: 800; border-radius: 0.5rem;
+        transition: 0.2s; outline: 0; position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .btn:hover { transform: translateY(-1px); }
+      .btn:focus-visible { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15), 0 0 0 6px var(--ring); }
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(180deg, var(--red2), var(--red));
+        box-shadow: 0 10px 24px rgba(179, 0, 0, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.12),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+      }
+      .btn-ghost {
+        color: #fff; background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .btn-ghost:hover { background: rgba(255, 255, 255, 0.14); }
+      .btn-magnetic { will-change: transform; transition: transform 0.08s ease; }
+
+      /* Nav */
+      .nav-link { position: relative; }
+      .nav-link::after {
+        content: ""; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0;
+        background: linear-gradient(90deg, var(--red), var(--red2));
+        transition: width 0.25s;
+      }
+      .nav-link:hover::after { width: 100%; }
+
+      /* Hero — MATCH HOMEPAGE numbers */
+      .hero { position: relative; min-height: 88vh; background: #000; overflow: hidden; }
+      .hero::before {
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6) 50%, rgba(10,10,11,0.8) 100%);
+      }
+      .hero::after {
+        content: ""; position: absolute; left: 22%; top: 34%;
+        width: 320px; height: 320px; filter: blur(85px); opacity: 0.42;
+        background: radial-gradient(circle, rgba(225,29,72,0.55), transparent 70%);
+        pointer-events: none;
+      }
+      .hero-video, .hero-image {
+        position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      }
+      .hero-video { filter: saturate(1.05) brightness(0.8); }
+      .hero-image { opacity: 0.4; display: none; }
+      .sparks { position: absolute; inset: 0; pointer-events: none; opacity: 0.35; }
+
+      /* Sticky section nav (under hero) */
+      .subnav-wrap {
+        position: sticky; top: 64px; z-index: 40;
+        background: rgba(0,0,0,0.45); backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .subnav a {
+        padding: 0.75rem 0.5rem; margin-right: 1rem; font-weight: 700; font-size: 0.9rem;
+        color: rgba(255,255,255,0.82);
+        position: relative; white-space: nowrap;
+      }
+      .subnav a::after {
+        content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; width:0;
+        background: linear-gradient(90deg, var(--red), var(--red2)); transition: width .25s;
+      }
+      .subnav a:hover::after, .subnav a.active::after { width:100%; }
+      .subnav .rail { height:1px; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); }
+
+      /* Panels + cards (same as homepage) */
+      .panel { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.25)); }
+      .panel-dark { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35)); }
+      .rail { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent); }
+
+      .card {
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.25));
+        border-radius: 1rem;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+      }
+      .card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+        background: linear-gradient(90deg, var(--red), var(--red2)); }
+      .card:hover {
+        box-shadow: 0 18px 50px rgba(225,29,72,0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        border-color: rgba(225, 29, 72, 0.5);
+      }
+
+      .section-h2 {
+        font-family: "Bebas Neue"; letter-spacing: 0.02em;
+        font-size: clamp(2.25rem, 4vw, 3.25rem); color: var(--red2);
+      }
+      .kicker {
+        text-transform: uppercase; letter-spacing: 0.18em; font-weight: 800;
+        font-size: 0.72rem; color: rgba(255,255,255,0.75);
+      }
+      .lead { color: rgba(255,255,255,0.85); font-size: 1.1rem; }
+
+      /* Reveal */
+      .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+      .reveal.is-in { opacity: 1; transform: none; }
+
+      /* FORM */
+      .field { display: flex; flex-direction: column; gap: 0.4rem; }
+      .input, .textarea, .select {
+        background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 0.65rem; padding: 0.85rem 1rem; outline: none; transition: 0.2s;
+      }
+      .input:focus, .textarea:focus, .select:focus {
+        box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.25); border-color: rgba(225, 29, 72, 0.5);
+      }
+      .label { font-weight: 600; color: #fff; }
+      .hint { font-size: 0.85rem; color: #ffffffb3; }
+
+      /* Service rows — media wrapper for 16:9 with hover zoom */
+      .media {
+        position: relative; overflow: hidden; border-radius: 0.9rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      }
+      .media::before { content:""; display:block; padding-top:56.25%; } /* 16:9 */
+      .media > img {
+        position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+        transform: scale(1); transition: transform .35s ease;
+        opacity: 0.96;
+      }
+      .media:hover > img { transform: scale(1.03); }
+
+      /* Accordion */
+      .faq-q { cursor: pointer; }
+      .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+      .faq-item.open .faq-a { max-height: 260px; }
+
+      @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+      /* --- Mobile hero sizing trim (no markup changes) --- */
+      @media (max-width: 640px) {
+        .hero { min-height: 72vh; } /* was 88vh */
+        .hero h1 {
+          font-size: clamp(2.2rem, 8vw, 2.75rem);
+          line-height: 1.02;
+        }
+        .hero p {
+          font-size: 0.98rem;
+          margin-top: 0.9rem; /* tighten spacing a hair */
+        }
+        .hero .btn {
+          padding: 0.78rem 1.1rem; /* slightly smaller buttons in hero only */
+        }
+        /* trim the top/bottom visual mass without touching utility classes */
+        .hero .max-w-7xl > * {
+          scroll-margin-top: 4rem;
+        }
+      }
+
+      /* ===== NO HORIZONTAL SCROLL (safe) ===== */
+      html, body { overflow-x: hidden; }
+      /* In case any child gets too wide, clip it at section level without hiding vertical overflow */
+      main, section, header, footer { overflow-x: clip; }
+    </style>
+  </head>
+  <body class="font-sans antialiased overflow-x-hidden">
+    <!-- site-wide floating red dots -->
+    <canvas id="floaters"></canvas>
+
+   <!-- ===== Header (with working Contact link to homepage form) ===== -->
+<header class="fixed inset-x-0 top-0 z-50">
+  <div class="bg-black/80 md:bg-black/60 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3" aria-label="Edmonson Contracting LLC home">
+        <img src="/img/EDLOGO.png" alt="Edmonson Contracting logo" class="h-10 w-auto" />
+        <span class="font-display tracking-wide text-2xl leading-none">
+          EDMONSON <span class="text-[var(--red2)]">CONTRACTING</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-8" aria-label="Primary">
+        <a href="/" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Home</a>
+        <a href="/services.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Services</a>
+        <a href="/our-work.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Our Work</a>
+        <!-- 👇 updated contact link -->
+        <a href="/#quote" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Contact</a>
+        <a href="#quote" class="btn btn-primary btn-magnetic">Free Quote</a>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button
+        id="menuBtn"
+        class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border border-white/15"
+        aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-black/90 backdrop-blur">
+      <div class="px-4 py-4 space-y-2 text-lg">
+        <a href="/" class="block py-2 text-[var(--red2)] hover:text-white">Home</a>
+        <a href="/services.html" class="block py-2 text-[var(--red2)] hover:text-white">Services</a>
+        <a href="/our-work.html" class="block py-2 text-[var(--red2)] hover:text-white">Our Work</a>
+        <!-- 👇 updated contact link -->
+        <a href="/#quote" class="block py-2 text-[var(--red2)] hover:text-white">Contact</a>
+        <a href="#quote" class="btn btn-primary w-full text-center mt-2">Get a Free Quote</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <main id="main" role="main">
+      <!-- Hero -->
+      <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-services-fallback.jpg">
+          <source src="/videos/hero-services.mp4" type="video/mp4" />
+        </video>
+        <img class="hero-image" src="https://images.unsplash.com/photo-1505692794403-34d4982f88aa?q=80&w=1920&auto=format&fit=crop" alt="Deck boards with sun flare" />
+        <canvas id="sparks" class="sparks"></canvas>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-16">
+          <div class="max-w-3xl">
+            <p class="kicker">Fences • Decks • Pergolas • Patios • Docks</p>
+            <h1 class="font-display text-5xl sm:text-6xl leading-[0.95] tracking-wide mt-2">
+              CRAFTSMANSHIP FOR <span class="red">FLORIDA WEATHER</span>.
+            </h1>
+            <p class="mt-5 text-lg text-white/85">
+              From privacy fences to waterfront docks, we build <span class="red">clean</span>, <span class="red">durable</span> projects with
+              <span class="red">coastal-ready materials</span> and straight-as-an-arrow lines.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="#quick-quote" class="btn btn-primary btn-magnetic">Start Your Quote</a>
+              <a href="#photos" class="btn btn-ghost">View Photos</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sticky Mini-Nav -->
+      <div class="subnav-wrap">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav class="subnav flex overflow-x-auto py-2" aria-label="Section">
+            <a href="#fences">Fences</a>
+            <a href="#decks">Decks</a>
+            <a href="#pergolas">Pergolas & Patios</a>
+            <a href="#docks">Docks</a>
+            <a href="#repairs">Repairs</a>
+            <a href="#faq">FAQ</a>
+            <a href="#photos">Photos</a>
+            <a href="#quick-quote">Quote</a>
+          </nav>
+        </div>
+        <div class="rail"></div>
+      </div>
+
+      <!-- Services Rows (Coker-style, alternating) -->
+      <section class="py-16 md:py-24 panel" id="services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2 reveal">What We <span class="red">Build</span></h2>
+          <p class="mt-3 lead reveal">Clean lines, smart materials, and daily tidy job sites. Each service below links straight to your quote.</p>
+
+          <!-- Row: Fences -->
+          <article id="fences" class="mt-10 grid lg:grid-cols-2 gap-8 items-center reveal">
+            <div class="media">
+              <img src="/img/IMG_2918.webp" alt="Long straight privacy fence with gate alignment" loading="lazy" />
+            </div>
+            <div class="card p-6">
+              <h3 class="text-2xl font-semibold text-white">Fences</h3>
+              <p class="text-white/80 mt-2">
+                Privacy (PT pine, cedar), chain link, and aluminum. Deep footings, true lines, and hardware that doesn’t sag.
+              </p>
+              <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
+                <li>6–8 ft privacy, cap & trim options</li>
+                <li>Cedar or composite for low maintenance</li>
+                <li>Custom gates & latches</li>
+              </ul>
+              <div class="mt-5 flex gap-3">
+                <a href="#quick-quote" class="btn btn-primary btn-magnetic">Get Fence Quote</a>
+                <a href="#photos" class="btn btn-ghost">Fence Photos</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Row: Decks (swap sides) -->
+          <article id="decks" class="mt-12 grid lg:grid-cols-2 gap-8 items-center reveal">
+            <div class="card p-6 order-2 lg:order-1">
+              <h3 class="text-2xl font-semibold text-white">Decks</h3>
+              <p class="text-white/80 mt-2">
+                Wood or composite decks with stair/rail options. Solid underfoot, corrosion-resistant fasteners, clean miters and spacing.
+              </p>
+              <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
+                <li>Composite or pressure-treated</li>
+                <li>Steps, railing, lighting</li>
+                <li>Coastal hardware spec</li>
+              </ul>
+              <div class="mt-5 flex gap-3">
+                <a href="#quick-quote" class="btn btn-primary btn-magnetic">Get Deck Quote</a>
+                <a href="#photos" class="btn btn-ghost">Deck Photos</a>
+              </div>
+            </div>
+            <div class="media order-1 lg:order-2">
+              <img src="/img/IMG_2332.webp" alt="Front porch/deck rebuild with new railing" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- Row: Pergolas & Patios -->
+          <article id="pergolas" class="mt-12 grid lg:grid-cols-2 gap-8 items-center reveal">
+            <div class="media">
+              <img src="/img/IMG_2579.webp" alt="Pergola shade and patio with clean cuts" loading="lazy" />
+            </div>
+            <div class="card p-6">
+              <h3 class="text-2xl font-semibold text-white">Pergolas & Patios</h3>
+              <p class="text-white/80 mt-2">
+                Shade structures and hardscapes that drain right. We match sun angle, add privacy screens, or integrate metal accents.
+              </p>
+              <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
+                <li>Pavers or concrete patios</li>
+                <li>Angle-set slats for shade</li>
+                <li>Integrated lighting options</li>
+              </ul>
+              <div class="mt-5 flex gap-3">
+                <a href="#quick-quote" class="btn btn-primary btn-magnetic">Get Pergola/Patio Quote</a>
+                <a href="#photos" class="btn btn-ghost">See Projects</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Row: Docks -->
+          <article id="docks" class="mt-12 grid lg:grid-cols-2 gap-8 items-center reveal">
+            <div class="card p-6 order-2 lg:order-1">
+              <h3 class="text-2xl font-semibold text-white">Docks & Waterfront</h3>
+              <p class="text-white/80 mt-2">
+                Marine-grade hardware, UV-resistant finishes, and slip-smart surfaces—built for salt air and sun.
+              </p>
+              <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
+                <li>Marine-grade fasteners</li>
+                <li>Slip-resistant decking</li>
+                <li>Maintenance planning</li>
+              </ul>
+              <div class="mt-5 flex gap-3">
+                <a href="#quick-quote" class="btn btn-primary btn-magnetic">Get Dock Quote</a>
+                <a href="#photos" class="btn btn-ghost">Dock Photos</a>
+              </div>
+            </div>
+            <div class="media order-1 lg:order-2">
+              <img src="/img/IMG_5479.webp" alt="Dock boards and water-ready finish" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- Row: Repairs -->
+          <article id="repairs" class="mt-12 grid lg:grid-cols-2 gap-8 items-center reveal">
+            <div class="media">
+              <img src="/img/IMG_2910.webp" alt="Corner gate alignment and apron" loading="lazy" />
+            </div>
+            <div class="card p-6">
+              <h3 class="text-2xl font-semibold text-white">Repairs & Upgrades</h3>
+              <p class="text-white/80 mt-2">
+                Gate fixes, panel replacements, re-staining, hardware upgrades—bring an existing install back to life.
+              </p>
+              <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
+                <li>Lean / sag correction</li>
+                <li>Board & picket replacements</li>
+                <li>Re-stain & seal</li>
+              </ul>
+              <div class="mt-5 flex gap-3">
+                <a href="#quick-quote" class="btn btn-primary btn-magnetic">Request Repair</a>
+                <a href="#photos" class="btn btn-ghost">Before & After</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="rail mt-16"></div>
+      </section>
+
+      <!-- Trust strip -->
+      <section class="py-8 panel-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-3 gap-3">
+          <div class="benefit px-5 py-3 text-white/85 border border-white/15 rounded-md bg-white/5">Licensed & Insured</div>
+          <div class="benefit px-5 py-3 text-white/85 border border-white/15 rounded-md bg-white/5">Local to Molino & Pensacola</div>
+          <div class="benefit px-5 py-3 text-white/85 border border-white/15 rounded-md bg-white/5">Fast Response 7am–7pm</div>
+        </div>
+        <div class="rail mt-10"></div>
+      </section>
+
+      <!-- Quick Quote (kept, light visual tweaks via shared styles) -->
+      <section id="quick-quote" class="py-16 md:py-24 panel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10 items-start">
+          <div class="lg:col-span-2">
+            <div class="card p-6" id="quote">
+              <h2 class="section-h2">Fast <span class="red">Free Quote</span></h2>
+              <p class="lead mt-2">Most quotes returned the same day between <span class="red">7am–7pm</span>. Attach photos for the fastest turnaround.</p>
+
+              <!-- tiny photo rail to encourage uploads -->
+              <div class="mt-4 grid grid-cols-3 gap-3">
+                <div class="media"><img src="/img/IMG_2567.webp" alt="Gate reinforcement closeup" loading="lazy" /></div>
+                <div class="media"><img src="/img/IMG_2579.webp" alt="Stair railing install" loading="lazy" /></div>
+                <div class="media"><img src="/img/IMG_2918.webp" alt="Fence run alignment" loading="lazy" /></div>
+              </div>
+
+              <form action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST" enctype="multipart/form-data" class="mt-6 space-y-4">
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <label class="field"><span class="label">Name</span><input class="input" type="text" name="name" required /></label>
+                  <label class="field"><span class="label">Phone</span><input class="input" type="tel" name="phone" required /></label>
+                  <label class="field"><span class="label">Email</span><input class="input" type="email" name="email" required /></label>
+                  <label class="field"><span class="label">City</span><input class="input" type="text" name="city" placeholder="Molino / Pensacola / Pace..." /></label>
+                </div>
+                <label class="field">
+                  <span class="label">Project Type</span>
+                  <select class="select" name="project">
+                    <option value="Fence">Fence</option><option value="Deck">Deck</option>
+                    <option value="Pergola">Pergola</option><option value="Patio">Patio</option>
+                    <option value="Dock">Dock</option><option value="Other">Other</option>
+                  </select>
+                </label>
+                <label class="field"><span class="label">Project Details</span>
+                  <textarea class="textarea" name="message" rows="4" placeholder="Linear feet, material preference, photos, timeline…"></textarea>
+                </label>
+                <label class="field"><span class="label">Photos (optional)</span>
+                  <input class="input" type="file" name="photos" accept="image/*" multiple />
+                  <span class="hint">Or text photos to <a class="underline" href="tel:+18502072412">(850) 207-2412</a>.</span>
+                </label>
+                <button class="btn btn-primary btn-magnetic w-full" type="submit">Start Your Quote</button>
+                <input type="hidden" name="_subject" value="New Quote Request — Edmonson Contracting (Services Page)" />
+                <input type="hidden" name="_template" value="table" />
+              </form>
+            </div>
+          </div>
+
+          <aside class="lg:col-span-1">
+            <div class="card p-6 h-full">
+              <h3 class="text-xl font-semibold">Why Homeowners <span class="red">Choose Us</span></h3>
+              <ul class="mt-4 space-y-3 text-white/80">
+                <li>• <span class="red">Licensed & Insured</span></li>
+                <li>• Coastal-ready hardware</li>
+                <li>• Clean, straight lines</li>
+                <li>• Clear communication</li>
+                <li>• Local to <span class="red">Molino & Pensacola</span></li>
+              </ul>
+              <div class="mt-6 border-t border-white/10 pt-4 text-sm text-white/70">
+                <p><strong>Phone:</strong> <a class="underline hover:text-white" href="tel:+18502072412">(850) 207-2412</a></p>
+                <p><strong>Email:</strong> <a class="underline hover:text-white" href="mailto:Edmonsoncontractingllc@gmail.com">Edmonsoncontractingllc@gmail.com</a></p>
+                <p><strong>Hours:</strong> 7am–7pm daily</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <div class="rail mt-16"></div>
+      </section>
+
+      <!-- Process -->
+      <section class="py-16 md:py-24 panel-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2 reveal">Our <span class="red">Process</span></h2>
+          <p class="mt-3 lead reveal">Clear steps, straight answers, clean results.</p>
+
+          <ol class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">1) Measure & Plan</h3>
+              <p class="text-white/75 mt-2">We walk the property, check terrain and access, and confirm materials and layout.</p></li>
+            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">2) Quote & Schedule</h3>
+              <p class="text-white/75 mt-2">Transparent pricing and a timeline you can plan around. Most fence quotes the same day.</p></li>
+            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">3) Build & Inspect</h3>
+              <p class="text-white/75 mt-2">Deep footings, corrosion-resistant hardware, clean miters and spacing, daily site tidy.</p></li>
+            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">4) Clean & Stand Behind It</h3>
+              <p class="text-white/75 mt-2">We finish and walk it with you. Questions later? We pick up the phone.</p></li>
+          </ol>
+
+          <div class="mt-8"><a href="#quick-quote" class="btn btn-primary btn-magnetic">Ready to start? Get a Free Quote</a></div>
+        </div>
+        <div class="rail mt-16"></div>
+      </section>
+
+      <!-- FAQs -->
+      <section class="py-16 md:py-24 panel" id="faq">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2 reveal">Frequently <span class="red">Asked</span> Questions</h2>
+          <div class="mt-8 space-y-4">
+            <div class="card p-5 faq-item reveal">
+              <button class="faq-q w-full text-left flex items-center justify-between">
+                <span class="font-semibold">Do you handle permits or HOA approvals?</span><span class="opacity-70">+</span>
+              </button>
+              <div class="faq-a text-white/80 mt-2">Yes. We’ll tell you what’s needed up front and help with
+                paperwork so there are no surprises.</div>
+            </div>
+            <div class="card p-5 faq-item reveal">
+              <button class="faq-q w-full text-left flex items-center justify-between">
+                <span class="font-semibold">How long does a typical fence take?</span><span class="opacity-70">+</span>
+              </button>
+              <div class="faq-a text-white/80 mt-2">Most fences install in 1–3 days after materials arrive. Decks
+                and pergolas vary by size and site.</div>
+            </div>
+            <div class="card p-5 faq-item reveal">
+              <button class="faq-q w-full text-left flex items-center justify-between">
+                <span class="font-semibold">Best materials for coastal weather?</span><span class="opacity-70">+</span>
+              </button>
+              <div class="faq-a text-white/80 mt-2">Pressure-treated pine and cedar perform well; composites reduce
+                maintenance. We spec corrosion-resistant hardware for coastal air.</div>
+            </div>
+            <div class="card p-5 faq-item reveal">
+              <button class="faq-q w-full text-left flex items-center justify-between">
+                <span class="font-semibold">Do you repair existing fences and decks?</span><span class="opacity-70">+</span>
+              </button>
+              <div class="faq-a text-white/80 mt-2">Yes—gates, leaning sections, board replacements, re-staining,
+                and hardware upgrades.</div>
+            </div>
+          </div>
+          <div class="mt-8"><a href="#quick-quote" class="btn btn-primary btn-magnetic">Ask a Question • Get a Quote</a></div>
+        </div>
+        <div class="rail mt-16"></div>
+      </section>
+
+      <!-- Mini gallery strip -->
+      <section class="py-12 panel-dark" id="photos">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2 reveal">Recent <span class="red">Work</span></h2>
+          <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="gallery">
+            <img class="rounded-lg object-cover h-28 w-full" src="/img/IMG_2918.webp" alt="Privacy fence" loading="lazy" />
+            <img class="rounded-lg object-cover h-28 w-full" src="/img/IMG_2332.webp" alt="Deck boards" loading="lazy" />
+            <img class="rounded-lg object-cover h-28 w-full" src="/img/IMG_2579.webp" alt="Pergola shade" loading="lazy" />
+            <img class="rounded-lg object-cover h-28 w-full" src="/img/IMG_2910.webp" alt="Gate alignment" loading="lazy" />
+            <img class="rounded-lg object-cover h-28 w-full" src="/img/IMG_2567.webp" alt="Hardware details" loading="lazy" />
+            <img class="rounded-lg object-cover h-28 w-full" src="/img/IMG_5479.webp" alt="Dock boards" loading="lazy" />
+          </div>
+          <div class="mt-8 text-center">
+            <a href="#quick-quote" class="btn btn-primary btn-magnetic">Like what you see? Start your quote</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="py-16 md:py-20 panel text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="section-h2 reveal">Built Strong. Built <span class="red">Right</span>. Every Time.</h2>
+          <p class="mt-3 lead reveal">
+            Call or text <a class="underline hover:text-white" href="tel:+18502072412">(850) 207-2412</a> — or click below.
+          </p>
+          <div class="mt-6"><a href="#quick-quote" class="btn btn-primary btn-magnetic">Request a Free Quote</a></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (same as homepage) -->
+    <footer class="border-t border-[var(--red2)]/30">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8" aria-label="Footer">
+        <div>
+          <img src="/images/logo-light.png" alt="Edmonson Contracting logo" class="h-9 w-auto" />
+          <address class="not-italic text-[var(--red2)]/80 mt-3">7309 Brickyard Rd<br />Molino, FL 32577</address>
+          <p class="text-[var(--red2)]/80 mt-1">Hours: 7am–7pm daily</p>
+          <p class="mt-2"><a href="tel:+18502072412" class="hover:text-[var(--red)] text-[var(--red2)]">(850) 207-2412</a></p>
+          <p><a href="mailto:Edmonsoncontractingllc@gmail.com" class="hover:text-[var(--red)] text-[var(--red2)]">Edmonsoncontractingllc@gmail.com</a></p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-[var(--red2)]">Company</h3>
+          <ul class="mt-3 space-y-1 text-[var(--red2)]/85">
+            <li><a href="/" class="hover:text-[var(--red)]">Home</a></li>
+            <li><a href="/services.html" class="hover:text-[var(--red)]">Services</a></li>
+            <li><a href="/contact.html" class="hover:text-[var(--red)]">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-[var(--red2)]">Service Area</h3>
+          <ul class="mt-3 space-y-1 text-[var(--red2)]/85">
+            <li>Molino & Cantonment</li>
+            <li>Pensacola, Beulah</li>
+            <li>Pace, Milton, Gulf Breeze</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-[var(--red2)]">Social</h3>
+          <ul class="mt-3 space-y-1 text-[var(--red2)]/85">
+            <li><a href="https://www.facebook.com/" class="hover:text-[var(--red)]">Facebook</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="border-t border-[var(--red2)]/30 text-center py-5 text-sm">
+        <span class="text-[var(--red2)]/70">© <span id="y"></span> Edmonson Contracting LLC • Built by
+          <span class="text-[var(--red2)]">Boosted Digital Marketing Solutions</span></span>
+      </div>
+    </footer>
+
+    <!-- Mobile CTA -->
+    <a href="#quick-quote" class="fixed md:hidden bottom-4 right-4 z-40 btn btn-primary btn-magnetic">Free Quote</a>
+
+    <!-- JS -->
+    <script>
+      // Year + mobile nav
+      const y = document.getElementById("y");
+      if (y) y.textContent = new Date().getFullYear();
+      const btn = document.getElementById("menuBtn");
+      const nav = document.getElementById("mobileNav");
+      if (btn && nav) {
+        btn.addEventListener("click", () => {
+          const ex = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", !ex);
+          nav.classList.toggle("hidden");
+        });
+      }
+
+      // Scroll reveal
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+        }), { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      // Magnetic buttons — run only on precise pointers (no touch wobble)
+      if (window.matchMedia('(pointer: fine)').matches) {
+        document.querySelectorAll(".btn-magnetic").forEach((b) => {
+          const r = 20;
+          b.addEventListener("mousemove", (e) => {
+            const m = b.getBoundingClientRect();
+            const x = ((e.clientX - (m.left + m.width / 2)) / (m.width / 2)) * r;
+            const y = ((e.clientY - (m.top + m.height / 2)) / (m.height / 2)) * r;
+            b.style.transform = `translate(${x * 0.1}px,${y * 0.1}px)`;
+          });
+          b.addEventListener("mouseleave", () => (b.style.transform = "translate(0,0)"));
+        });
+      }
+
+      // HERO sparks — same as homepage
+      (function () {
+        const c = document.getElementById("sparks");
+        if (!c) return;
+        const ctx = c.getContext("2d");
+        let W, H, parts = [];
+        const R = Math.random;
+
+        function size() {
+          W = c.width = window.innerWidth;
+          H = c.height = document.querySelector(".hero").offsetHeight;
+        }
+        function seed() {
+          const COUNT = Math.round(Math.min(70, Math.max(28, (W * H) / 50000)));
+          parts = Array.from({ length: COUNT }, () => ({
+            x: R() * W,
+            y: R() * H,
+            vx: (R() - 0.5) * 0.06,
+            vy: -(0.15 + R() * 0.35),
+            r: 0.6 + R() * 1.4,
+            a: 0.28 + R() * 0.32,
+          }));
+        }
+        function step() {
+          ctx.clearRect(0, 0, W, H);
+          for (const p of parts) {
+            p.x += p.vx; p.y += p.vy;
+            if (p.y < -12 || p.x < -12 || p.x > W + 12) { p.x = R() * W; p.y = H + 12; }
+            const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 9);
+            g.addColorStop(0, `rgba(225,29,72,${p.a})`);
+            g.addColorStop(1, "rgba(225,29,72,0)");
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 9, 0, Math.PI * 2); ctx.fill();
+          }
+          requestAnimationFrame(step);
+        }
+        window.addEventListener("resize", () => { size(); seed(); });
+        size(); seed(); step();
+      })();
+
+      // GLOBAL floating red dots — same as homepage
+      (function () {
+        const canvas = document.getElementById("floaters");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        let W = 0, H = 0, parts = [];
+        const R = Math.random;
+
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; seed(true); }
+
+        function seed(seedAnywhere = false) {
+          const COUNT = Math.round(Math.min(70, Math.max(30, (W * H) / 50000)));
+          parts = Array.from({ length: COUNT }, () => ({
+            x: seedAnywhere ? R() * W : R() * W,
+            y: seedAnywhere ? R() * H : H + 12,
+            vx: (R() - 0.5) * 0.06,
+            vy: -(0.14 + R() * 0.3),
+            r: 0.6 + R() * 1.4,
+            a: 0.25 + R() * 0.35,
+          }));
+        }
+
+        function step() {
+          ctx.clearRect(0, 0, W, H);
+          for (const p of parts) {
+            p.x += p.vx; p.y += p.vy;
+            if (p.y < -14 || p.x < -14 || p.x > W + 14) {
+              p.x = R() * W; p.y = H + 14; p.vx = (R() - 0.5) * 0.06; p.vy = -(0.14 + R() * 0.3);
+            }
+            const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 9);
+            g.addColorStop(0, `rgba(225,29,72,${p.a})`); g.addColorStop(1, "rgba(225,29,72,0)");
+            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 9, 0, Math.PI * 2); ctx.fill();
+          }
+          requestAnimationFrame(step);
+        }
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        window.addEventListener("resize", resize);
+        resize(); step();
+      })();
+
+      // FAQ accordion
+      document.querySelectorAll(".faq-item").forEach((item) => {
+        item.querySelector(".faq-q").addEventListener("click", () => item.classList.toggle("open"));
+      });
+
+      // Sticky subnav active link
+      const sections = ["fences","decks","pergolas","docks","repairs","faq","photos","quick-quote"]
+        .map(id => document.getElementById(id)).filter(Boolean);
+      const links = Array.from(document.querySelectorAll(".subnav a"));
+      const setActive = (id) => {
+        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
+      };
+      const so = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      }, { rootMargin: "-40% 0% -55% 0%", threshold: 0.01 });
+      sections.forEach(s => so.observe(s));
+    </script>
+
+    <!-- Schema (Service w/ OfferCatalog) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Edmonson Contracting LLC",
+        "url": "https://www.edmonsoncontracting.com/services.html",
+        "image": "/images/og-hero.jpg",
+        "telephone": "+1-850-207-2412",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "7309 Brickyard Rd",
+          "addressLocality": "Molino",
+          "addressRegion": "FL",
+          "postalCode": "32577",
+          "addressCountry": "US"
+        },
+        "areaServed": ["Molino","Pensacola","Escambia County","Cantonment","Pace","Milton","Beulah","Gulf Breeze"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Construction Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fences" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Decks" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pergolas & Patios" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Docks & Waterfront" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Repairs & Upgrades" } }
+          ]
+        }
+      }
+    </script>
+  </body>
+</html>
