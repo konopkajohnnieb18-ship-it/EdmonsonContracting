@@ -37,23 +37,22 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
 
-    
     <style>
-
       /* --- Mobile fixed CTA safety --- */
-html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header */
+      html { scroll-padding-top: 80px; } /* prevents in-page jumps hiding under header */
 
-@media (max-width: 767px) {
-  /* give the page room so the fixed CTA never covers content */
-  body { padding-bottom: calc(112px + env(safe-area-inset-bottom)); }
-
-  /* position the button above the iOS home indicator */
-  .mobile-cta {
-    position: fixed;
-    right: 1rem;
-    bottom: calc(1rem + env(safe-area-inset-bottom));
-  }
-}
+      @media (max-width: 767px) {
+        /* give the page room so the fixed CTA never covers content */
+        body { padding-bottom: calc(112px + env(safe-area-inset-bottom)); }
+        /* position the button above the iOS home indicator */
+        .mobile-cta {
+          position: fixed;
+          right: 1rem;
+          bottom: calc(1rem + env(safe-area-inset-bottom));
+        }
+        /* ensure content clears the fixed header on small screens */
+        main { padding-top: 64px; }
+      }
 
       :root {
         --ink: #0a0a0b;
@@ -199,50 +198,91 @@ html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header
       html, body { overflow-x: hidden; width: 100%; }
       header, main, footer, section { overflow-x: clip; }
       img, video, canvas { max-width: 100%; height: auto; display: block; }
+
+      /* --- Dark select + mobile dropdown look, autofill, and spacing fixes --- */
+      .input, .textarea, .select {
+        background-color: rgba(255,255,255,0.06) !important;
+        color-scheme: dark;           /* better built-in UI on iOS */
+        -webkit-appearance: none;
+        appearance: none;
+      }
+      .select {
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 8l4 4 4-4' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.9rem center;
+        background-size: 1rem;
+        padding-right: 2.5rem;
+      }
+      select option { color: #000; } /* if the OS forces a light picker sheet */
+
+      /* Autofill text remains readable */
+      input:-webkit-autofill,
+      input:-webkit-autofill:focus {
+        -webkit-text-fill-color: #fff;
+        transition: background-color 9999s ease-in-out 0s;
+      }
+
+      /* Anchor targets never hide under fixed header */
+      #quote, section, h2[id], [id^="section-"] { scroll-margin-top: 90px; }
+
+      /* --- Fix: keep the mobile CTA fixed above the footer --- */
+/* Place this AFTER the .btn rule in your stylesheet */
+@media (max-width: 767px) {
+  .mobile-cta.btn {
+    position: fixed !important;             /* beat .btn { position: relative } */
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    z-index: 1000;                           /* above header/footer (z-40 is fine too) */
+  }
+
+  /* keep space so the fixed button never covers content */
+  body { padding-bottom: calc(112px + env(safe-area-inset-bottom)); }
+}
+
     </style>
   </head>
   <body class="font-sans antialiased overflow-x-hidden">
     <canvas id="floaters"></canvas>
 
-<header class="fixed inset-x-0 top-0 z-50">
-  <div class="bg-black/80 md:bg-black/60 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3" aria-label="Edmonson Contracting LLC home">
-        <img src="/img/EDLOGO.png" alt="Edmonson Contracting logo" class="h-10 w-auto" />
-        <span class="font-display tracking-wide text-2xl leading-none">
-          EDMONSON <span class="text-[var(--red2)]">CONTRACTING</span>
-        </span>
-      </a>
+    <header class="fixed inset-x-0 top-0 z-50">
+      <div class="bg-black/80 md:bg-black/60 backdrop-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <a href="/" class="flex items-center gap-3" aria-label="Edmonson Contracting LLC home">
+            <img src="/img/EDLOGO.png" alt="Edmonson Contracting logo" class="h-10 w-auto" />
+            <span class="font-display tracking-wide text-2xl leading-none">
+              EDMONSON <span class="text-[var(--red2)]">CONTRACTING</span>
+            </span>
+          </a>
 
-      <nav class="hidden md:flex items-center gap-8" aria-label="Primary">
-        <a href="/" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Home</a>
-        <a href="/services.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Services</a>
-        <a href="/our-work.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Our Work</a>
-        <a href="/#quote" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Contact</a>
-        <a href="#quote" class="btn btn-primary btn-magnetic">Free Quote</a>
-      </nav>
+          <nav class="hidden md:flex items-center gap-8" aria-label="Primary">
+            <a href="/" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Home</a>
+            <a href="/services.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Services</a>
+            <a href="/our-work.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Our Work</a>
+            <a href="/#quote" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Contact</a>
+            <a href="#quote" class="btn btn-primary btn-magnetic">Free Quote</a>
+          </nav>
 
-      <button
-        id="menuBtn"
-        class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border border-white/15"
-        aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>
-        </svg>
-      </button>
-    </div>
+          <button
+            id="menuBtn"
+            class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border border-white/15"
+            aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </button>
+        </div>
 
-    <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-black/90 backdrop-blur">
-      <div class="px-4 py-4 space-y-2 text-lg">
-        <a href="/" class="block py-2 text-[var(--red2)] hover:text-white">Home</a>
-        <a href="/services.html" class="block py-2 text-[var(--red2)] hover:text-white">Services</a>
-        <a href="/our-work.html" class="block py-2 text-[var(--red2)] hover:text-white">Our Work</a>
-        <a href="/#quote" class="block py-2 text-[var(--red2)] hover:text-white">Contact</a>
-        <a href="#quote" class="btn btn-primary w-full text-center mt-2">Get a Free Quote</a>
+        <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-black/90 backdrop-blur">
+          <div class="px-4 py-4 space-y-2 text-lg">
+            <a href="/" class="block py-2 text-[var(--red2)] hover:text-white">Home</a>
+            <a href="/services.html" class="block py-2 text-[var(--red2)] hover:text-white">Services</a>
+            <a href="/our-work.html" class="block py-2 text-[var(--red2)] hover:text-white">Our Work</a>
+            <a href="/#quote" class="block py-2 text-[var(--red2)] hover:text-white">Contact</a>
+            <a href="#quote" class="btn btn-primary w-full text-center mt-2">Get a Free Quote</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
     <main id="main" role="main">
       <section class="hero">
@@ -333,17 +373,42 @@ html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header
               <h3 class="text-xl font-semibold text-[var(--red2)]">Fast Free Quote</h3>
               <p class="text-white/80 mt-2">Send details and photos—most quotes returned the same day between 7am–7pm.</p>
 
-              <form action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST" enctype="multipart/form-data" class="mt-4 space-y-4">
+              <!-- ===== Wired Formspree form ===== -->
+              <form id="contact-form"
+                    action="https://formspree.io/f/xldpynra"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    class="mt-4 space-y-4" novalidate>
                 <input type="text" name="_gotcha" style="display: none" tabindex="-1" autocomplete="off" />
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <label class="field"><span class="label">Name</span><input class="input" type="text" name="name" required /></label>
-                  <label class="field"><span class="label">Phone</span><input class="input" type="tel" name="phone" required /></label>
-                  <label class="field"><span class="label">Email</span><input class="input" type="email" name="email" required /></label>
-                  <label class="field"><span class="label">City</span><input class="input" type="text" name="city" placeholder="Molino / Pensacola / Pace..." /></label>
+                  <label class="field">
+                    <span class="label">Name <span class="text-[var(--red2)]">*</span></span>
+                    <input class="input" type="text" name="name" required minlength="2" placeholder="First & last name" />
+                  </label>
+
+                  <label class="field">
+                    <span class="label">Phone <span class="text-[var(--red2)]">*</span></span>
+                    <input class="input" type="tel" name="phone" required inputmode="tel" autocomplete="tel"
+                           pattern="^[0-9\\-\\+\\(\\)\\s]{7,}$" placeholder="(850) 207-2412" />
+                    <span class="hint">Digits only is fine.</span>
+                  </label>
+
+                  <label class="field">
+                    <span class="label">Email <span class="text-[var(--red2)]">*</span></span>
+                    <input class="input" type="email" name="email" required autocomplete="email" placeholder="you@email.com" />
+                  </label>
+
+                  <label class="field">
+                    <span class="label">City</span>
+                    <input class="input" type="text" name="city" placeholder="Molino / Pensacola / Pace…" />
+                  </label>
                 </div>
+
                 <label class="field">
-                  <span class="label">Project Type</span>
-                  <select class="select" name="project">
+                  <span class="label">Project Type <span class="text-[var(--red2)]">*</span></span>
+                  <select class="select" name="project" required>
+                    <option value="" disabled selected>Select a project</option>
                     <option value="Fence">Fence</option>
                     <option value="Deck">Deck</option>
                     <option value="Pergola">Pergola</option>
@@ -352,19 +417,32 @@ html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header
                     <option value="Other">Other</option>
                   </select>
                 </label>
+
                 <label class="field">
-                  <span class="label">Project Details</span>
-                  <textarea class="textarea" name="message" rows="4" placeholder="Linear feet, material preference, photos, timeline…"></textarea>
+                  <span class="label">Project Details <span class="text-[var(--red2)]">*</span></span>
+                  <textarea class="textarea" name="message" rows="4" required minlength="10"
+                            placeholder="Linear feet, material preference, photos, timeline…"></textarea>
+                  <span class="hint">A few sentences helps us quote faster.</span>
                 </label>
+
                 <label class="field">
                   <span class="label">Photos (optional)</span>
                   <input class="input" type="file" name="photos" accept="image/*" multiple />
                   <span class="hint">You can also text photos to (850) 207-2412.</span>
                 </label>
+
+                <label class="flex items-center gap-2 text-sm">
+                  <input type="checkbox" name="consent" required>
+                  I agree to be contacted about my quote. <span class="text-[var(--red2)]">*</span>
+                </label>
+
                 <button class="btn btn-primary w-full btn-magnetic" type="submit">Start Your Quote</button>
                 <input type="hidden" name="_subject" value="New Quote Request — Edmonson Contracting" />
                 <input type="hidden" name="_template" value="table" />
+
+                <p id="form-status" class="text-sm text-white/80"></p>
               </form>
+              <!-- ===== /Form ===== -->
 
               <ul class="mt-6 text-white/70 space-y-1 text-sm">
                 <li><strong>Phone:</strong> <a class="underline hover:text-white" href="tel:+18502072412">(850) 207-2412</a></li>
@@ -412,8 +490,8 @@ html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header
             </figure>
 
             <figure class="card overflow-hidden reveal">
-              <img src="/img/IMG_2910.webp" alt="Corner gate with concrete apron, aligned posts" class="w-full h-56 object-cover" loading="lazy" />
-              <figcaption class="p-4 text-white/70"> Full Porch Railing Install  — tight alignment and a tidy finish.</figcaption>
+              <img src="/img/IMG_2910.webp" alt="Full porch railing install" class="w-full h-56 object-cover" loading="lazy" />
+              <figcaption class="p-4 text-white/70">Full porch railing install — tight alignment and a tidy finish.</figcaption>
             </figure>
           </div>
 
@@ -519,7 +597,7 @@ html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header
       <section class="overflow-hidden border-y border-white/10">
         <div class="flex gap-10 whitespace-nowrap animate-[scroll_22s_linear_infinite] py-4 text-white/80 px-6">
           <span>“Clean lines & finished fast.” — Customer.</span>
-          <span>“Deck is rock solid.” — Customer..</span>
+          <span>“Deck is rock solid.” — Customer.</span>
           <span>“Showed up. Communicated. Delivered.” — Customer.</span>
           <span>“Fence looks factory-straight.” — Customer.</span>
           <span>“Professional and reliable.” — Customer.</span>
@@ -576,13 +654,14 @@ html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header
         </div>
       </nav>
       <div class="border-t border-[var(--red2)]/30 text-center py-5 text-sm">
-        <span class="text-[var(--red2)]/70">© <span id="y"></span> Edmonson Contracting LLC • Built by
-          <span class="text-[var(--red2)]/70">© <span id="y"></span> Edmonson Contracting LLC • Built by
-  <a href="https://www.boosteddigitalmarketingsolutions.com" target="_blank" rel="noopener" class="text-[var(--red2)] hover:underline">Boosted Digital Marketing Solutions</a></span>
+        <span class="text-[var(--red2)]/70">
+          © <span id="y"></span> Edmonson Contracting LLC • Built by
+          <a href="https://www.boosteddigitalmarketingsolutions.com" target="_blank" rel="noopener" class="text-[var(--red2)] hover:underline">Boosted Digital Marketing Solutions</a>
+        </span>
       </div>
     </footer>
 
-   <a href="#quote" class="mobile-cta md:hidden z-40 btn btn-primary btn-magnetic">Free Quote</a>
+    <a href="#quote" class="mobile-cta md:hidden z-40 btn btn-primary btn-magnetic">Free Quote</a>
 
     <script>
       const y = document.getElementById("y");
@@ -701,6 +780,54 @@ html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         window.addEventListener("resize", resize);
         resize(); step();
+      })();
+    </script>
+
+    <!-- Formspree AJAX handler -->
+    <script>
+      (function () {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        const status = document.getElementById('form-status');
+
+        function show(msg, ok=false){
+          status.textContent = msg;
+          status.style.color = ok ? '#86efac' : '#fecaca';
+        }
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          show('Sending…');
+          const endpoint = form.getAttribute('action');
+          const data = new FormData(form);
+
+          try {
+            const res = await fetch(endpoint, {
+              method: 'POST',
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+
+            if (res.ok) {
+              form.reset();
+              show('Thanks! Your request was sent. We’ll reach out between 7am–7pm.', true);
+            } else {
+              const json = await res.json().catch(() => ({}));
+              const msg = (json && json.errors)
+                ? json.errors.map(e => e.message).join(', ')
+                : 'Something went wrong. Please try again or call (850) 207-2412.';
+              show(msg);
+            }
+          } catch (err) {
+            show('Network error. Please check your connection and try again.');
+          }
+        });
       })();
     </script>
 
