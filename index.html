@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Edmonson Contracting LLC | Fence & Deck Contractor in Molino & Pensacola, FL</title>
     <meta name="description" content="Custom fences, decks, pergolas, patios, and docks across Molino, Pensacola & Escambia County, FL. Licensed & insured. Free quotes 7am–7pm. Built Strong. Built Right. Every Time." />
-    <link rel="canonical" href="https://www.edmonsoncontracting.com/" />
+    <meta name="robots" content="index,follow" />
+
+    <link rel="canonical" href="https://edmonsoncontracting.com/" />
+    <link rel="alternate" hreflang="en-us" href="https://edmonsoncontracting.com/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
     <meta property="og:title" content="Edmonson Contracting LLC | Built Strong. Built Right." />
     <meta property="og:description" content="Custom fences, decks, pergolas, patios & docks in Molino, Pensacola & Escambia County. Request a free quote—fast response 7am–7pm." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.edmonsoncontracting.com/" />
-    <meta property="og:image" content="/images/og-hero.jpg" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta property="og:url" content="https://edmonsoncontracting.com/" />
+    <meta property="og:image" content="https://edmonsoncontracting.com/images/og-hero.jpg" />
 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Edmonson Contracting LLC | Built Strong. Built Right." />
+    <meta name="twitter:description" content="Custom fences, decks, pergolas, patios & docks in Molino, Pensacola & Escambia County. Request a free quote—fast response 7am–7pm." />
+    <meta name="twitter:image" content="https://edmonsoncontracting.com/images/og-hero.jpg" />
+
+    <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -73,12 +83,10 @@
 
       @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
-      /* Keep page from sliding; allow sections to render full width (no clipping) */
       html, body { overflow-x:hidden; width:100%; }
-      header, main, footer, section { overflow-x:visible; } /* <-- was clip; this caused your cut-off */
+      header, main, footer, section { overflow-x:visible; }
       img, video, canvas { max-width:100%; height:auto; display:block; }
 
-      /* Dark select look */
       .input,.textarea,.select{ background-color:rgba(255,255,255,.06) !important; color-scheme:dark; -webkit-appearance:none; appearance:none; }
       .select{
         background-image:url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 8l4 4 4-4' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -89,7 +97,6 @@
 
       #quote, section, h2[id], [id^="section-"] { scroll-margin-top:90px; }
 
-      /* Fixed mobile CTA with safe-area padding */
       @media (max-width:767px){
         .mobile-cta.btn{
           position:fixed !important;
@@ -102,7 +109,6 @@
         main{ padding-top:64px; }
       }
 
-      /* Optional helpers if you later put CTAs inside flex rows */
       .why-card,.feature-card{ display:flex; align-items:flex-start; gap:12px; }
       .why-card .text,.feature-card .text{ flex:1 1 auto; min-width:0; overflow-wrap:anywhere; }
       .why-card .cta,.feature-card .cta{ flex:0 0 auto; max-width:100%; }
@@ -117,6 +123,7 @@
   <body class="font-sans antialiased overflow-x-hidden">
     <canvas id="floaters"></canvas>
 
+    <!-- HEADER -->
     <header class="fixed inset-x-0 top-0 z-50">
       <div class="bg-black/80 md:bg-black/60 backdrop-blur border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -152,7 +159,9 @@
       </div>
     </header>
 
+    <!-- MAIN -->
     <main id="main" role="main">
+      <!-- HERO -->
       <section class="hero">
         <video class="hero-video" autoplay muted loop playsinline poster="/images/hero-fallback.jpg"><source src="/videos/hero.mp4" type="video/mp4" /></video>
         <img class="hero-image" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1920&auto=format&fit=crop" alt="Warm wood privacy fence" />
@@ -185,6 +194,7 @@
         </div>
       </section>
 
+      <!-- STATS -->
       <section class="py-10 panel">
         <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-3 gap-6 text-center">
           <div><div class="text-4xl font-extrabold text-[var(--red2)] counter" data-to="200">0</div><p class="mt-1 text-white/70">Projects Completed</p></div>
@@ -195,49 +205,36 @@
 
       <div class="rail"></div>
 
-     <section class="py-16 md:py-24 panel-dark">
-  <div class="mx-auto px-4 sm:px-5 lg:px-8 max-w-full md:max-w-7xl grid lg:grid-cols-3 gap-10 overflow-x-hidden">
-    <div class="lg:col-span-2">
-      <h2 class="section-h2 reveal text-left">Why Homeowners Choose Edmonson</h2>
-      <p class="mt-3 lead reveal text-white/85">
-        From the first measurement to the final cleanup, we treat your property like our own. Expect straight fence lines,
-        flush deck boards, and tidy job sites—built to handle Florida weather.
-      </p>
+      <!-- WHY + QUOTE -->
+      <section class="py-16 md:py-24 panel-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10">
+          <div class="lg:col-span-2">
+            <h2 class="section-h2 reveal">Why Homeowners Choose Edmonson</h2>
+            <p class="mt-3 lead reveal">
+              From the first measurement to the final cleanup, we treat your property like our own. Expect straight fence lines,
+              flush deck boards, and tidy job sites—built to handle Florida weather.
+            </p>
+            <div class="mt-8 grid md:grid-cols-2 gap-6">
+              <div class="card p-6 reveal">
+                <h3 class="text-xl font-semibold text-[var(--red2)]">Precision Craftsmanship</h3>
+                <p class="text-white/80 mt-2">We square, level, and line every build. It looks better on day one and lasts longer year after year.</p>
+              </div>
+              <div class="card p-6 reveal">
+                <h3 class="text-xl font-semibold text-[var(--red2)]">Clear Communication</h3>
+                <p class="text-white/80 mt-2">Quotes you can understand, timelines you can plan around, and updates as we work.</p>
+              </div>
+              <div class="card p-6 reveal">
+                <h3 class="text-xl font-semibold text-[var(--red2)]">Quality Materials</h3>
+                <p class="text-white/80 mt-2">We recommend the right posts, fasteners, and finishes for strength in coastal conditions.</p>
+              </div>
+              <div class="card p-6 reveal">
+                <h3 class="text-xl font-semibold text-[var(--red2)]">Local & Reliable</h3>
+                <p class="text-white/80 mt-2">Molino roots, Pensacola service area. We show up, we finish, we stand behind the work.</p>
+              </div>
+            </div>
+          </div>
 
-      <div class="mt-8 grid sm:grid-cols-1 md:grid-cols-2 gap-5">
-        <div class="card p-6 reveal w-full max-w-full">
-          <h3 class="text-xl font-semibold text-[var(--red2)]">Precision Craftsmanship</h3>
-          <p class="text-white/80 mt-2">
-            We square, level, and line every build. It looks better on day one and lasts longer year after year.
-          </p>
-        </div>
-
-        <div class="card p-6 reveal w-full max-w-full">
-          <h3 class="text-xl font-semibold text-[var(--red2)]">Clear Communication</h3>
-          <p class="text-white/80 mt-2">
-            Quotes you can understand, timelines you can plan around, and updates as we work.
-          </p>
-        </div>
-
-        <div class="card p-6 reveal w-full max-w-full">
-          <h3 class="text-xl font-semibold text-[var(--red2)]">Quality Materials</h3>
-          <p class="text-white/80 mt-2">
-            We recommend the right posts, fasteners, and finishes for strength in coastal conditions.
-          </p>
-        </div>
-
-        <div class="card p-6 reveal w-full max-w-full">
-          <h3 class="text-xl font-semibold text-[var(--red2)]">Local & Reliable</h3>
-          <p class="text-white/80 mt-2">
-            Molino roots, Pensacola service area. We show up, we finish, we stand behind the work.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-      <aside class="lg:col-span-1">
+          <aside class="lg:col-span-1">
             <div class="card p-6 h-full reveal" id="quote">
               <h3 class="text-xl font-semibold text-[var(--red2)]">Fast Free Quote</h3>
               <p class="text-white/80 mt-2">Send details and photos—most quotes returned the same day between 7am–7pm.</p>
@@ -291,6 +288,7 @@
         <div class="rail mt-16"></div>
       </section>
 
+      <!-- GALLERY -->
       <section id="gallery" class="py-16 md:py-24 panel">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="section-h2 reveal">Craftsmanship You Can See</h2>
@@ -310,6 +308,7 @@
         <div class="rail mt-16"></div>
       </section>
 
+      <!-- ARTICLE -->
       <article class="py-16 md:py-24 panel-dark">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <header class="mb-6">
@@ -335,6 +334,7 @@
         <div class="rail mt-16"></div>
       </article>
 
+      <!-- MARQUEE -->
       <section class="overflow-hidden border-y border-white/10">
         <div class="flex gap-10 whitespace-nowrap animate-[scroll_22s_linear_infinite] py-4 text-white/80 px-6">
           <span>“Clean lines & finished fast.” — Customer.</span>
@@ -345,6 +345,7 @@
         </div>
       </section>
 
+      <!-- CTA -->
       <section class="py-16 md:py-20 panel">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 class="section-h2 reveal">Let’s Get Your Project Started</h2>
@@ -354,6 +355,7 @@
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="border-t border-[var(--red2)]/30">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8" aria-label="Footer">
         <div>
@@ -449,31 +451,73 @@
       })();
     </script>
 
-    <script>
-      (function(){
-        const form=document.getElementById('contact-form'); if(!form) return;
-        const status=document.getElementById('form-status');
-        function show(msg, ok=false){ status.textContent=msg; status.style.color= ok ? '#86efac' : '#fecaca'; }
-        form.addEventListener('submit', async (e)=>{
-          e.preventDefault();
-          if(!form.checkValidity()){ form.reportValidity(); return; }
-          show('Sending…');
-          const endpoint=form.getAttribute('action'); const data=new FormData(form);
-          try{
-            const res=await fetch(endpoint,{ method:'POST', body:data, headers:{ 'Accept':'application/json' }});
-            if(res.ok){ form.reset(); show('Thanks! Your request was sent. We’ll reach out between 7am–7pm.', true); }
-            else{
-              const json=await res.json().catch(()=>({}));
-              const msg=(json&&json.errors)? json.errors.map(e=>e.message).join(', ') : 'Something went wrong. Please try again or call (850) 207-2412.';
-              show(msg);
-            }
-          }catch(err){ show('Network error. Please check your connection and try again.'); }
-        });
-      })();
+    <!-- SCHEMA: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"LocalBusiness",
+      "@id":"https://edmonsoncontracting.com/#business",
+      "name":"Edmonson Contracting LLC",
+      "url":"https://edmonsoncontracting.com",
+      "image":"https://edmonsoncontracting.com/images/og-hero.jpg",
+      "logo":"https://edmonsoncontracting.com/images/logo-light.png",
+      "telephone":"+1-850-207-2412",
+      "email":"Edmonsoncontractingllc@gmail.com",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"7309 Brickyard Rd",
+        "addressLocality":"Molino",
+        "addressRegion":"FL",
+        "postalCode":"32577",
+        "addressCountry":"US"
+      },
+      "openingHours":"Mo-Su 07:00-19:00",
+      "priceRange":"$$",
+      "founder":"Shannon Edmonson",
+      "areaServed":[
+        {"@type":"Place","name":"Molino FL"},
+        {"@type":"Place","name":"Pensacola FL"},
+        {"@type":"Place","name":"Escambia County FL"},
+        {"@type":"Place","name":"Cantonment FL"},
+        {"@type":"Place","name":"Pace FL"},
+        {"@type":"Place","name":"Milton FL"},
+        {"@type":"Place","name":"Beulah FL"},
+        {"@type":"Place","name":"Gulf Breeze FL"}
+      ],
+      "sameAs":["https://www.facebook.com/p/Edmonson-Contracting-LLC-61559296551842/"]
+    }
     </script>
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Edmonson Contracting LLC","image":"/images/og-hero.jpg","telephone":"+1-850-207-2412","email":"Edmonsoncontractingllc@gmail.com","address":{"@type":"PostalAddress","streetAddress":"7309 Brickyard Rd","addressLocality":"Molino","addressRegion":"FL","postalCode":"32577","addressCountry":"US"},"areaServed":[{"@type":"Place","name":"Molino FL"},{"@type":"Place","name":"Pensacola FL"},{"@type":"Place","name":"Escambia County FL"},{"@type":"Place","name":"Cantonment FL"},{"@type":"Place","name":"Pace FL"},{"@type":"Place","name":"Milton FL"},{"@type":"Place","name":"Beulah FL"},{"@type":"Place","name":"Gulf Breeze FL"}],"openingHours":"Mo-Su 07:00-19:00","url":"https://www.edmonsoncontracting.com","sameAs":["https://www.facebook.com/"],"priceRange":"$$","founder":"Shannon Edmonson","logo":"/images/logo-light.png"}</script>
+    <!-- SCHEMA: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebSite",
+      "@id":"https://edmonsoncontracting.com/#website",
+      "url":"https://edmonsoncontracting.com",
+      "name":"Edmonson Contracting LLC"
+    }
+    </script>
 
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Fence & Deck Guide for Molino & Pensacola Homeowners","author":{"@type":"Organization","name":"Edmonson Contracting LLC"},"publisher":{"@type":"Organization","name":"Edmonson Contracting LLC","logo":{"@type":"ImageObject","url":"/images/logo-light.png"}},"image":"/images/og-hero.jpg","articleSection":["Fences","Decks","Pergolas","Patios","Docks"],"about":[{"@type":"Thing","name":"Fence installation"},{"@type":"Thing","name":"Deck construction"}],"datePublished":"2025-10-10","mainEntityOfPage":"https://www.edmonsoncontracting.com/"}</script>
+    <!-- SCHEMA: Article -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Article",
+      "headline":"Fence & Deck Guide for Molino & Pensacola Homeowners",
+      "author":{"@type":"Organization","name":"Edmonson Contracting LLC"},
+      "publisher":{
+        "@type":"Organization",
+        "name":"Edmonson Contracting LLC",
+        "logo":{"@type":"ImageObject","url":"https://edmonsoncontracting.com/images/logo-light.png"}
+      },
+      "image":"https://edmonsoncontracting.com/images/og-hero.jpg",
+      "articleSection":["Fences","Decks","Pergolas","Patios","Docks"],
+      "about":[{"@type":"Thing","name":"Fence installation"},{"@type":"Thing","name":"Deck construction"}],
+      "datePublished":"2025-10-10",
+      "mainEntityOfPage":"https://edmonsoncontracting.com/"
+    }
+    </script>
   </body>
 </html>
+
