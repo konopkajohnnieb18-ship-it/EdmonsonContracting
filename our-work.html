@@ -24,6 +24,8 @@
       :root{
         --ink:#0a0a0b;--ink2:#0f1012;--text:#fff;
         --red:#b30000;--red2:#e11d48;--ring:rgba(225,29,72,.4);
+        /* Hint native controls to dark on mobile */
+        color-scheme: dark;
       }
 
       /* ====== GLOBAL LAYOUT SAFEGUARDS (fix horizontal drag/scroll) ====== */
@@ -373,6 +375,9 @@
       </div>
     </footer>
 
+    <!-- Mobile CTA (fixed, not inside footer) -->
+    <a href="/#quote" class="fixed md:hidden bottom-4 right-4 z-40 btn btn-primary btn-magnetic">Free Quote</a>
+
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" aria-hidden="true">
       <button class="close" aria-label="Close">✕</button>
@@ -394,17 +399,19 @@
       const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target);}})},{threshold:.12});
       document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 
-      // Magnetic
-      document.querySelectorAll(".btn-magnetic").forEach(b=>{
-        const r=20;
-        b.addEventListener("mousemove",e=>{
-          const m=b.getBoundingClientRect();
-          const x=((e.clientX-(m.left+m.width/2))/(m.width/2))*r;
-          const y=((e.clientY-(m.top+m.height/2))/(m.height/2))*r;
-          b.style.transform=`translate(${x*.1}px,${y*.1}px)`;
+      // Magnetic (pointer devices only)
+      if (window.matchMedia('(pointer: fine)').matches) {
+        document.querySelectorAll(".btn-magnetic").forEach(b=>{
+          const r=20;
+          b.addEventListener("mousemove",e=>{
+            const m=b.getBoundingClientRect();
+            const x=((e.clientX-(m.left+m.width/2))/(m.width/2))*r;
+            const y=((e.clientY-(m.top+m.height/2))/(m.height/2))*r;
+            b.style.transform=`translate(${x*.1}px,${y*.1}px)`;
+          });
+          b.addEventListener("mouseleave",()=>b.style.transform="translate(0,0)");
         });
-        b.addEventListener("mouseleave",()=>b.style.transform="translate(0,0)");
-      });
+      }
 
       // HERO sparks
       (function(){
@@ -471,8 +478,17 @@
         const img=e.target.closest("img"); if(!img) return;
         idx=images.indexOf(img.src); openLB();
       });
-      function openLB(){lbImg.src=images[idx]; lb.classList.add("open"); lb.setAttribute("aria-hidden","false");}
-      function closeLB(){lb.classList.remove("open"); lb.setAttribute("aria-hidden","true");}
+      function openLB(){
+        lbImg.src=images[idx];
+        lb.classList.add("open");
+        lb.setAttribute("aria-hidden","false");
+        document.body.style.overflow='hidden';   // lock scroll
+      }
+      function closeLB(){
+        lb.classList.remove("open");
+        lb.setAttribute("aria-hidden","true");
+        document.body.style.overflow='';         // unlock scroll
+      }
       function prev(){idx=(idx-1+images.length)%images.length; lbImg.src=images[idx];}
       function next(){idx=(idx+1)%images.length; lbImg.src=images[idx];}
       closeBtn.addEventListener("click",closeLB); prevBtn.addEventListener("click",prev); nextBtn.addEventListener("click",next);
