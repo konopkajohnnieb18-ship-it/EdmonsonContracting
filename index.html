@@ -37,7 +37,24 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
 
+    
     <style>
+
+      /* --- Mobile fixed CTA safety --- */
+html { scroll-padding-top: 72px; } /* prevents in-page jumps hiding under header */
+
+@media (max-width: 767px) {
+  /* give the page room so the fixed CTA never covers content */
+  body { padding-bottom: calc(112px + env(safe-area-inset-bottom)); }
+
+  /* position the button above the iOS home indicator */
+  .mobile-cta {
+    position: fixed;
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+}
+
       :root {
         --ink: #0a0a0b;
         --ink2: #0f1012;
@@ -565,7 +582,7 @@
       </div>
     </footer>
 
-    <a href="#quote" class="fixed md:hidden bottom-4 right-4 z-40 btn btn-primary btn-magnetic">Free Quote</a>
+   <a href="#quote" class="mobile-cta md:hidden z-40 btn btn-primary btn-magnetic">Free Quote</a>
 
     <script>
       const y = document.getElementById("y");
