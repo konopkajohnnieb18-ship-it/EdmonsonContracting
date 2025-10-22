@@ -239,6 +239,76 @@
   body { padding-bottom: calc(112px + env(safe-area-inset-bottom)); }
 }
 
+
+/* === Mobile Fix for CTA Cutoff and Layout Overflow === */
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent page from sliding side-to-side */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Feature / Why Choose cards */
+.why-card, .feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Text section can shrink instead of pushing button out */
+.why-card .text, .feature-card .text {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* CTA stays compact */
+.why-card .cta, .feature-card .cta {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+/* Make sure button fits inside its box */
+.why-card .cta .btn,
+.feature-card .cta .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* Stack layout on small screens */
+@media (max-width: 480px) {
+  .why-card, .feature-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .why-card .cta, .feature-card .cta {
+    width: 100%;
+    margin-top: 10px;
+    position: static !important;
+    transform: none !important;
+  }
+
+  .why-card .cta .btn,
+  .feature-card .cta .btn {
+    width: 100%;
+  }
+}
+
+
     </style>
   </head>
   <body class="font-sans antialiased overflow-x-hidden">
