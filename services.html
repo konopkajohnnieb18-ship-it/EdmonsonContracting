@@ -4,279 +4,130 @@
     <!-- Meta -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-      Services | Edmonson Contracting LLC — Fences, Decks, Pergolas, Patios, Docks
-    </title>
-    <meta
-      name="description"
-      content="Fences, decks, pergolas, patios, and docks for Molino, Pensacola & Escambia County, FL. Precision builds, coastal-ready hardware, clean job sites. Get a fast free quote."
-    />
-    <link rel="canonical" href="https://www.edmonsoncontracting.com/services.html" />
+    <title>Services | Edmonson Contracting LLC — Fences, Decks, Pergolas, Patios, Docks</title>
+    <meta name="description" content="Fences, decks, pergolas, patios, and docks for Molino, Pensacola & Escambia County, FL. Precision builds, coastal-ready hardware, clean job sites. Get a fast free quote." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://edmonsoncontracting.com/services.html" />
+    <link rel="icon" href="/favicon.ico" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Edmonson Contracting LLC — Services" />
-    <meta
-      property="og:description"
-      content="Custom fences, decks, pergolas, patios, and docks built to handle Florida weather. Request a fast free quote."
-    />
+    <meta property="og:description" content="Custom fences, decks, pergolas, patios, and docks built to handle Florida weather. Request a fast free quote." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edmonsoncontracting.com/services.html" />
     <meta property="og:image" content="/images/og-hero.jpg" />
 
-    <link rel="icon" href="/favicon.ico" />
+    <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-      :root {
-        --ink: #0a0a0b;
-        --ink2: #0f1012;
-        --text: #fff;
-        --red: #b30000;
-        --red2: #e11d48; /* match homepage */
-        --ring: rgba(225, 29, 72, 0.4);
-        /* Help native controls adopt dark UI on mobile */
-        color-scheme: dark;
+      :root{--ink:#0a0a0b;--ink2:#0f1012;--text:#fff;--red:#b30000;--red2:#e11d48;--ring:rgba(225,29,72,.4);color-scheme:dark}
+      html{scroll-behavior:smooth}
+      body{background:var(--ink);color:var(--text)}
+      header,main,footer{position:relative;z-index:1}
+      #floaters{position:fixed;inset:0;z-index:0;opacity:.5;pointer-events:none}
+      .font-display{font-family:"Bebas Neue",system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+      .font-sans{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+      .red{color:var(--red2)}
+      .btn{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.3rem;font-weight:800;border-radius:.5rem;transition:.2s;outline:0;position:relative;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08)}
+      .btn:hover{transform:translateY(-1px)}
+      .btn:focus-visible{box-shadow:0 0 0 3px rgba(255,255,255,.15),0 0 0 6px var(--ring)}
+      .btn-primary{color:#fff;background:linear-gradient(180deg,var(--red2),var(--red));box-shadow:0 10px 24px rgba(179,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12),inset 0 -1px 0 rgba(0,0,0,.5)}
+      .btn-ghost{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+      .btn-ghost:hover{background:rgba(255,255,255,.14)}
+      .btn-magnetic{will-change:transform;transition:transform .08s ease}
+      .nav-link{position:relative}
+      .nav-link::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--red),var(--red2));transition:width .25s}
+      .nav-link:hover::after{width:100%}
+      .hero{position:relative;min-height:88vh;background:#000;overflow:hidden}
+      .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.6) 50%,rgba(10,10,11,.8) 100%)}
+      .hero::after{content:"";position:absolute;left:22%;top:34%;width:320px;height:320px;filter:blur(85px);opacity:.42;background:radial-gradient(circle,rgba(225,29,72,.55),transparent 70%);pointer-events:none}
+      .hero-video,.hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+      .hero-video{filter:saturate(1.05) brightness(.8)}
+      .hero-image{opacity:.4;display:none}
+      .sparks{position:absolute;inset:0;pointer-events:none;opacity:.35}
+      .subnav-wrap{position:sticky;top:64px;z-index:40;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+      .subnav a{padding:.75rem .5rem;margin-right:1rem;font-weight:700;font-size:.9rem;color:rgba(255,255,255,.82);position:relative;white-space:nowrap}
+      .subnav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,var(--red),var(--red2));transition:width .25s}
+      .subnav a:hover::after,.subnav a.active::after{width:100%}
+      .subnav .rail{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
+      .panel{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(0,0,0,.25))}
+      .panel-dark{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(0,0,0,.35))}
+      .rail{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
+      .card{position:relative;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(0,0,0,.25));border-radius:1rem;box-shadow:0 12px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
+      .card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--red),var(--red2))}
+      .card:hover{box-shadow:0 18px 50px rgba(225,29,72,.18),inset 0 1px 0 rgba(255,255,255,.08);border-color:rgba(225,29,72,.5)}
+      .section-h2{font-family:"Bebas Neue";letter-spacing:.02em;font-size:clamp(2.25rem,4vw,3.25rem);color:var(--red2)}
+      .kicker{text-transform:uppercase;letter-spacing:.18em;font-weight:800;font-size:.72rem;color:rgba(255,255,255,.75)}
+      .lead{color:rgba(255,255,255,.85);font-size:1.1rem}
+      .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+      .reveal.is-in{opacity:1;transform:none}
+      .field{display:flex;flex-direction:column;gap:.4rem}
+      .input,.textarea,.select{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:.65rem;padding:.85rem 1rem;outline:none;transition:.2s}
+      .input:focus,.textarea:focus,.select:focus{box-shadow:0 0 0 3px rgba(225,29,72,.25);border-color:rgba(225,29,72,.5)}
+      .select{appearance:none;-webkit-appearance:none;background-image:none}
+      .label{font-weight:600;color:#fff}
+      .hint{font-size:.85rem;color:#ffffffb3}
+      .media{position:relative;overflow:hidden;border-radius:.9rem;border:1px solid rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+      .media::before{content:"";display:block;padding-top:56.25%}
+      .media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1);transition:transform .35s ease;opacity:.96}
+      .media:hover>img{transform:scale(1.03)}
+      .faq-q{cursor:pointer}
+      .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+      .faq-item.open .faq-a{max-height:260px}
+      @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+      @media (max-width:640px){
+        .hero{min-height:72vh}
+        .hero h1{font-size:clamp(2.2rem,8vw,2.75rem);line-height:1.02}
+        .hero p{font-size:.98rem;margin-top:.9rem}
+        .hero .btn{padding:.78rem 1.1rem}
+        .hero .max-w-7xl>*{scroll-margin-top:4rem}
       }
-      html { scroll-behavior: smooth; }
-      body { background: var(--ink); color: var(--text); }
-
-      /* keep content above the global background canvas */
-      header, main, footer { position: relative; z-index: 1; }
-
-      /* site-wide floating dots canvas (behind everything) — MATCH HOMEPAGE */
-      #floaters {
-        position: fixed; inset: 0; z-index: 0;
-        opacity: 0.5; /* matches home */
-        pointer-events: none;
-      }
-
-      .font-display {
-        font-family: "Bebas Neue", system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      }
-      .font-sans {
-        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      }
-      .red { color: var(--red2); }
-
-      /* Buttons */
-      .btn {
-        display: inline-flex; align-items: center; justify-content: center;
-        padding: 0.9rem 1.3rem; font-weight: 800; border-radius: 0.5rem;
-        transition: 0.2s; outline: 0; position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(255, 255, 255, 0.08);
-      }
-      .btn:hover { transform: translateY(-1px); }
-      .btn:focus-visible { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15), 0 0 0 6px var(--ring); }
-      .btn-primary {
-        color: #fff;
-        background: linear-gradient(180deg, var(--red2), var(--red));
-        box-shadow: 0 10px 24px rgba(179, 0, 0, 0.35),
-          inset 0 1px 0 rgba(255, 255, 255, 0.12),
-          inset 0 -1px 0 rgba(0, 0, 0, 0.5);
-      }
-      .btn-ghost {
-        color: #fff; background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-      }
-      .btn-ghost:hover { background: rgba(255, 255, 255, 0.14); }
-      .btn-magnetic { will-change: transform; transition: transform 0.08s ease; }
-
-      /* Nav */
-      .nav-link { position: relative; }
-      .nav-link::after {
-        content: ""; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0;
-        background: linear-gradient(90deg, var(--red), var(--red2));
-        transition: width 0.25s;
-      }
-      .nav-link:hover::after { width: 100%; }
-
-      /* Hero — MATCH HOMEPAGE numbers */
-      .hero { position: relative; min-height: 88vh; background: #000; overflow: hidden; }
-      .hero::before {
-        content: ""; position: absolute; inset: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6) 50%, rgba(10,10,11,0.8) 100%);
-      }
-      .hero::after {
-        content: ""; position: absolute; left: 22%; top: 34%;
-        width: 320px; height: 320px; filter: blur(85px); opacity: 0.42;
-        background: radial-gradient(circle, rgba(225,29,72,0.55), transparent 70%);
-        pointer-events: none;
-      }
-      .hero-video, .hero-image {
-        position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      }
-      .hero-video { filter: saturate(1.05) brightness(0.8); }
-      .hero-image { opacity: 0.4; display: none; }
-      .sparks { position: absolute; inset: 0; pointer-events: none; opacity: 0.35; }
-
-      /* Sticky section nav (under hero) */
-      .subnav-wrap {
-        position: sticky; top: 64px; z-index: 40;
-        background: rgba(0,0,0,0.45); backdrop-filter: blur(8px);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-      .subnav a {
-        padding: 0.75rem 0.5rem; margin-right: 1rem; font-weight: 700; font-size: 0.9rem;
-        color: rgba(255,255,255,0.82);
-        position: relative; white-space: nowrap;
-      }
-      .subnav a::after {
-        content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; width:0;
-        background: linear-gradient(90deg, var(--red), var(--red2)); transition: width .25s;
-      }
-      .subnav a:hover::after, .subnav a.active::after { width:100%; }
-      .subnav .rail { height:1px; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); }
-
-      /* Panels + cards (same as homepage) */
-      .panel { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.25)); }
-      .panel-dark { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.35)); }
-      .rail { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent); }
-
-      .card {
-        position: relative;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.25));
-        border-radius: 1rem;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-        overflow: hidden;
-      }
-      .card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
-        background: linear-gradient(90deg, var(--red), var(--red2)); }
-      .card:hover {
-        box-shadow: 0 18px 50px rgba(225,29,72,0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-        border-color: rgba(225, 29, 72, 0.5);
-      }
-
-      .section-h2 {
-        font-family: "Bebas Neue"; letter-spacing: 0.02em;
-        font-size: clamp(2.25rem, 4vw, 3.25rem); color: var(--red2);
-      }
-      .kicker {
-        text-transform: uppercase; letter-spacing: 0.18em; font-weight: 800;
-        font-size: 0.72rem; color: rgba(255,255,255,0.75);
-      }
-      .lead { color: rgba(255,255,255,0.85); font-size: 1.1rem; }
-
-      /* Reveal */
-      .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
-      .reveal.is-in { opacity: 1; transform: none; }
-
-      /* FORM */
-      .field { display: flex; flex-direction: column; gap: 0.4rem; }
-      .input, .textarea, .select {
-        background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.18);
-        border-radius: 0.65rem; padding: 0.85rem 1rem; outline: none; transition: 0.2s;
-      }
-      .input:focus, .textarea:focus, .select:focus {
-        box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.25); border-color: rgba(225, 29, 72, 0.5);
-      }
-      /* Light touch to keep the field dark; the OS dropdown may still be light on iOS */
-      .select { appearance: none; -webkit-appearance: none; background-image: none; }
-      .label { font-weight: 600; color: #fff; }
-      .hint { font-size: 0.85rem; color: #ffffffb3; }
-
-      /* Service rows — media wrapper for 16:9 with hover zoom */
-      .media {
-        position: relative; overflow: hidden; border-radius: 0.9rem;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-      }
-      .media::before { content:""; display:block; padding-top:56.25%; } /* 16:9 */
-      .media > img {
-        position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-        transform: scale(1); transition: transform .35s ease;
-        opacity: 0.96;
-      }
-      .media:hover > img { transform: scale(1.03); }
-
-      /* Accordion */
-      .faq-q { cursor: pointer; }
-      .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-      .faq-item.open .faq-a { max-height: 260px; }
-
-      @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-      /* --- Mobile hero sizing trim (no markup changes) --- */
-      @media (max-width: 640px) {
-        .hero { min-height: 72vh; } /* was 88vh */
-        .hero h1 {
-          font-size: clamp(2.2rem, 8vw, 2.75rem);
-          line-height: 1.02;
-        }
-        .hero p {
-          font-size: 0.98rem;
-          margin-top: 0.9rem; /* tighten spacing a hair */
-        }
-        .hero .btn {
-          padding: 0.78rem 1.1rem; /* slightly smaller buttons in hero only */
-        }
-        /* trim the top/bottom visual mass without touching utility classes */
-        .hero .max-w-7xl > * {
-          scroll-margin-top: 4rem;
-        }
-      }
-
-      /* ===== NO HORIZONTAL SCROLL (safe) ===== */
-      html, body { overflow-x: hidden; }
-      /* In case any child gets too wide, clip it at section level without hiding vertical overflow */
-      main, section, header, footer { overflow-x: clip; }
+      html,body{overflow-x:hidden}
+      main,section,header,footer{overflow-x:clip}
     </style>
   </head>
   <body class="font-sans antialiased overflow-x-hidden">
     <!-- site-wide floating red dots -->
     <canvas id="floaters"></canvas>
 
-   <!-- ===== Header (with working Contact link to homepage form) ===== -->
-<header class="fixed inset-x-0 top-0 z-50">
-  <div class="bg-black/80 md:bg-black/60 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3" aria-label="Edmonson Contracting LLC home">
-        <img src="/img/EDLOGO.png" alt="Edmonson Contracting logo" class="h-10 w-auto" />
-        <span class="font-display tracking-wide text-2xl leading-none">
-          EDMONSON <span class="text-[var(--red2)]">CONTRACTING</span>
-        </span>
-      </a>
+    <!-- Header -->
+    <header class="fixed inset-x-0 top-0 z-50">
+      <div class="bg-black/80 md:bg-black/60 backdrop-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <a href="/" class="flex items-center gap-3" aria-label="Edmonson Contracting LLC home">
+            <img src="/img/EDLOGO.png" alt="Edmonson Contracting logo" class="h-10 w-auto" />
+            <span class="font-display tracking-wide text-2xl leading-none">EDMONSON <span class="text-[var(--red2)]">CONTRACTING</span></span>
+          </a>
 
-      <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-8" aria-label="Primary">
-        <a href="/" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Home</a>
-        <a href="/services.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Services</a>
-        <a href="/our-work.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Our Work</a>
-        <!-- 👇 updated contact link -->
-        <a href="/#quote" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Contact</a>
-        <a href="#quote" class="btn btn-primary btn-magnetic">Free Quote</a>
-      </nav>
+          <nav class="hidden md:flex items-center gap-8" aria-label="Primary">
+            <a href="/" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Home</a>
+            <a href="/services.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Services</a>
+            <a href="/our-work.html" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Our Work</a>
+            <a href="/#quote" class="nav-link text-[var(--red2)] hover:text-white transition-colors">Contact</a>
+            <a href="#quick-quote" class="btn btn-primary btn-magnetic">Free Quote</a>
+          </nav>
 
-      <!-- Mobile toggle -->
-      <button
-        id="menuBtn"
-        class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border border-white/15"
-        aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>
-        </svg>
-      </button>
-    </div>
+          <button id="menuBtn" class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-md border border-white/15" aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
 
-    <!-- Mobile nav -->
-    <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-black/90 backdrop-blur">
-      <div class="px-4 py-4 space-y-2 text-lg">
-        <a href="/" class="block py-2 text-[var(--red2)] hover:text-white">Home</a>
-        <a href="/services.html" class="block py-2 text-[var(--red2)] hover:text-white">Services</a>
-        <a href="/our-work.html" class="block py-2 text-[var(--red2)] hover:text-white">Our Work</a>
-        <!-- 👇 updated contact link -->
-        <a href="/#quote" class="block py-2 text-[var(--red2)] hover:text-white">Contact</a>
-        <a href="#quote" class="btn btn-primary w-full text-center mt-2">Get a Free Quote</a>
+        <!-- Mobile nav -->
+        <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-black/90 backdrop-blur">
+          <div class="px-4 py-4 space-y-2 text-lg">
+            <a href="/" class="block py-2 text-[var(--red2)] hover:text-white">Home</a>
+            <a href="/services.html" class="block py-2 text-[var(--red2)] hover:text-white">Services</a>
+            <a href="/our-work.html" class="block py-2 text-[var(--red2)] hover:text-white">Our Work</a>
+            <a href="/#quote" class="block py-2 text-[var(--red2)] hover:text-white">Contact</a>
+            <a href="#quick-quote" class="btn btn-primary w-full text-center mt-2">Get a Free Quote</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
     <main id="main" role="main">
       <!-- Hero -->
@@ -328,16 +179,14 @@
           <h2 class="section-h2 reveal">What We <span class="red">Build</span></h2>
           <p class="mt-3 lead reveal">Clean lines, smart materials, and daily tidy job sites. Each service below links straight to your quote.</p>
 
-          <!-- Row: Fences -->
+          <!-- Fences -->
           <article id="fences" class="mt-10 grid lg:grid-cols-2 gap-8 items-center reveal">
             <div class="media">
               <img src="/img/IMG_2918.webp" alt="Long straight privacy fence with gate alignment" loading="lazy" />
             </div>
             <div class="card p-6">
               <h3 class="text-2xl font-semibold text-white">Fences</h3>
-              <p class="text-white/80 mt-2">
-                Privacy (PT pine, cedar), chain link, and aluminum. Deep footings, true lines, and hardware that doesn’t sag.
-              </p>
+              <p class="text-white/80 mt-2">Privacy (PT pine, cedar), chain link, and aluminum. Deep footings, true lines, and hardware that doesn’t sag.</p>
               <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
                 <li>6–8 ft privacy, cap & trim options</li>
                 <li>Cedar or composite for low maintenance</li>
@@ -350,13 +199,11 @@
             </div>
           </article>
 
-          <!-- Row: Decks (swap sides) -->
+          <!-- Decks -->
           <article id="decks" class="mt-12 grid lg:grid-cols-2 gap-8 items-center reveal">
             <div class="card p-6 order-2 lg:order-1">
               <h3 class="text-2xl font-semibold text-white">Decks</h3>
-              <p class="text-white/80 mt-2">
-                Wood or composite decks with stair/rail options. Solid underfoot, corrosion-resistant fasteners, clean miters and spacing.
-              </p>
+              <p class="text-white/80 mt-2">Wood or composite decks with stair/rail options. Solid underfoot, corrosion-resistant fasteners, clean miters and spacing.</p>
               <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
                 <li>Composite or pressure-treated</li>
                 <li>Steps, railing, lighting</li>
@@ -372,16 +219,14 @@
             </div>
           </article>
 
-          <!-- Row: Pergolas & Patios -->
+          <!-- Pergolas & Patios -->
           <article id="pergolas" class="mt-12 grid lg:grid-cols-2 gap-8 items-center reveal">
             <div class="media">
               <img src="/img/IMG_2579.webp" alt="Pergola shade and patio with clean cuts" loading="lazy" />
             </div>
             <div class="card p-6">
               <h3 class="text-2xl font-semibold text-white">Pergolas & Patios</h3>
-              <p class="text-white/80 mt-2">
-                Shade structures and hardscapes that drain right. We match sun angle, add privacy screens, or integrate metal accents.
-              </p>
+              <p class="text-white/80 mt-2">Shade structures and hardscapes that drain right. We match sun angle, add privacy screens, or integrate metal accents.</p>
               <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
                 <li>Pavers or concrete patios</li>
                 <li>Angle-set slats for shade</li>
@@ -394,13 +239,11 @@
             </div>
           </article>
 
-          <!-- Row: Docks -->
+          <!-- Docks -->
           <article id="docks" class="mt-12 grid lg:grid-cols-2 gap-8 items-center reveal">
             <div class="card p-6 order-2 lg:order-1">
               <h3 class="text-2xl font-semibold text-white">Docks & Waterfront</h3>
-              <p class="text-white/80 mt-2">
-                Marine-grade hardware, UV-resistant finishes, and slip-smart surfaces—built for salt air and sun.
-              </p>
+              <p class="text-white/80 mt-2">Marine-grade hardware, UV-resistant finishes, and slip-smart surfaces—built for salt air and sun.</p>
               <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
                 <li>Marine-grade fasteners</li>
                 <li>Slip-resistant decking</li>
@@ -416,16 +259,14 @@
             </div>
           </article>
 
-          <!-- Row: Repairs -->
+          <!-- Repairs -->
           <article id="repairs" class="mt-12 grid lg:grid-cols-2 gap-8 items-center reveal">
             <div class="media">
               <img src="/img/IMG_2910.webp" alt="Corner gate alignment and apron" loading="lazy" />
             </div>
             <div class="card p-6">
               <h3 class="text-2xl font-semibold text-white">Repairs & Upgrades</h3>
-              <p class="text-white/80 mt-2">
-                Gate fixes, panel replacements, re-staining, hardware upgrades—bring an existing install back to life.
-              </p>
+              <p class="text-white/80 mt-2">Gate fixes, panel replacements, re-staining, hardware upgrades—bring an existing install back to life.</p>
               <ul class="mt-4 text-white/75 space-y-2 list-disc pl-5">
                 <li>Lean / sag correction</li>
                 <li>Board & picket replacements</li>
@@ -469,23 +310,10 @@
               <form id="servicesQuoteForm" action="https://formspree.io/f/xldpynra" method="POST" enctype="multipart/form-data" class="mt-6 space-y-4" novalidate>
                 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <label class="field">
-                    <span class="label">Name</span>
-                    <input class="input" type="text" name="name" autocomplete="name" required />
-                  </label>
-                  <label class="field">
-                    <span class="label">Phone</span>
-                    <input class="input" type="tel" name="phone" autocomplete="tel" required
-                           inputmode="tel" pattern="^[0-9+()\\s.-]{7,}$" title="Please enter a valid phone number." />
-                  </label>
-                  <label class="field">
-                    <span class="label">Email</span>
-                    <input class="input" type="email" name="email" autocomplete="email" required />
-                  </label>
-                  <label class="field">
-                    <span class="label">City</span>
-                    <input class="input" type="text" name="city" placeholder="Molino / Pensacola / Pace..." autocomplete="address-level2" />
-                  </label>
+                  <label class="field"><span class="label">Name</span><input class="input" type="text" name="name" autocomplete="name" required /></label>
+                  <label class="field"><span class="label">Phone</span><input class="input" type="tel" name="phone" autocomplete="tel" required inputmode="tel" pattern="^[0-9+()\\s.-]{7,}$" title="Please enter a valid phone number." /></label>
+                  <label class="field"><span class="label">Email</span><input class="input" type="email" name="email" autocomplete="email" required /></label>
+                  <label class="field"><span class="label">City</span><input class="input" type="text" name="city" placeholder="Molino / Pensacola / Pace..." autocomplete="address-level2" /></label>
                 </div>
 
                 <label class="field">
@@ -503,8 +331,7 @@
 
                 <label class="field">
                   <span class="label">Project Details</span>
-                  <textarea class="textarea" name="message" rows="4" minlength="10" required
-                            placeholder="Linear feet, material preference, photos, timeline…"></textarea>
+                  <textarea class="textarea" name="message" rows="4" minlength="10" required placeholder="Linear feet, material preference, photos, timeline…"></textarea>
                 </label>
 
                 <label class="field">
@@ -529,7 +356,6 @@
                 <input type="hidden" name="page" value="Services" />
               </form>
 
-              <!-- Status area for AJAX -->
               <div id="formStatus" class="mt-4 text-sm text-white/80" role="status" aria-live="polite"></div>
             </div>
           </div>
@@ -562,14 +388,10 @@
           <p class="mt-3 lead reveal">Clear steps, straight answers, clean results.</p>
 
           <ol class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">1) Measure & Plan</h3>
-              <p class="text-white/75 mt-2">We walk the property, check terrain and access, and confirm materials and layout.</p></li>
-            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">2) Quote & Schedule</h3>
-              <p class="text-white/75 mt-2">Transparent pricing and a timeline you can plan around. Most fence quotes the same day.</p></li>
-            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">3) Build & Inspect</h3>
-              <p class="text-white/75 mt-2">Deep footings, corrosion-resistant hardware, clean miters and spacing, daily site tidy.</p></li>
-            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">4) Clean & Stand Behind It</h3>
-              <p class="text-white/75 mt-2">We finish and walk it with you. Questions later? We pick up the phone.</p></li>
+            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">1) Measure & Plan</h3><p class="text-white/75 mt-2">We walk the property, check terrain and access, and confirm materials and layout.</p></li>
+            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">2) Quote & Schedule</h3><p class="text-white/75 mt-2">Transparent pricing and a timeline you can plan around. Most fence quotes the same day.</p></li>
+            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">3) Build & Inspect</h3><p class="text-white/75 mt-2">Deep footings, corrosion-resistant hardware, clean miters and spacing, daily site tidy.</p></li>
+            <li class="card p-6 reveal"><h3 class="text-lg font-semibold">4) Clean & Stand Behind It</h3><p class="text-white/75 mt-2">We finish and walk it with you. Questions later? We pick up the phone.</p></li>
           </ol>
 
           <div class="mt-8"><a href="#quick-quote" class="btn btn-primary btn-magnetic">Ready to start? Get a Free Quote</a></div>
@@ -583,32 +405,20 @@
           <h2 class="section-h2 reveal">Frequently <span class="red">Asked</span> Questions</h2>
           <div class="mt-8 space-y-4">
             <div class="card p-5 faq-item reveal">
-              <button class="faq-q w-full text-left flex items-center justify-between">
-                <span class="font-semibold">Do you handle permits or HOA approvals?</span><span class="opacity-70">+</span>
-              </button>
-              <div class="faq-a text-white/80 mt-2">Yes. We’ll tell you what’s needed up front and help with
-                paperwork so there are no surprises.</div>
+              <button class="faq-q w-full text-left flex items-center justify-between"><span class="font-semibold">Do you handle permits or HOA approvals?</span><span class="opacity-70">+</span></button>
+              <div class="faq-a text-white/80 mt-2">Yes. We’ll tell you what’s needed up front and help with paperwork so there are no surprises.</div>
             </div>
             <div class="card p-5 faq-item reveal">
-              <button class="faq-q w-full text-left flex items-center justify-between">
-                <span class="font-semibold">How long does a typical fence take?</span><span class="opacity-70">+</span>
-              </button>
-              <div class="faq-a text-white/80 mt-2">Most fences install in 1–3 days after materials arrive. Decks
-                and pergolas vary by size and site.</div>
+              <button class="faq-q w-full text-left flex items-center justify-between"><span class="font-semibold">How long does a typical fence take?</span><span class="opacity-70">+</span></button>
+              <div class="faq-a text-white/80 mt-2">Most fences install in 1–3 days after materials arrive. Decks and pergolas vary by size and site.</div>
             </div>
             <div class="card p-5 faq-item reveal">
-              <button class="faq-q w-full text-left flex items-center justify-between">
-                <span class="font-semibold">Best materials for coastal weather?</span><span class="opacity-70">+</span>
-              </button>
-              <div class="faq-a text-white/80 mt-2">Pressure-treated pine and cedar perform well; composites reduce
-                maintenance. We spec corrosion-resistant hardware for coastal air.</div>
+              <button class="faq-q w-full text-left flex items-center justify-between"><span class="font-semibold">Best materials for coastal weather?</span><span class="opacity-70">+</span></button>
+              <div class="faq-a text-white/80 mt-2">Pressure-treated pine and cedar perform well; composites reduce maintenance. We spec corrosion-resistant hardware for coastal air.</div>
             </div>
             <div class="card p-5 faq-item reveal">
-              <button class="faq-q w-full text-left flex items-center justify-between">
-                <span class="font-semibold">Do you repair existing fences and decks?</span><span class="opacity-70">+</span>
-              </button>
-              <div class="faq-a text-white/80 mt-2">Yes—gates, leaning sections, board replacements, re-staining,
-                and hardware upgrades.</div>
+              <button class="faq-q w-full text-left flex items-center justify-between"><span class="font-semibold">Do you repair existing fences and decks?</span><span class="opacity-70">+</span></button>
+              <div class="faq-a text-white/80 mt-2">Yes—gates, leaning sections, board replacements, re-staining, and hardware upgrades.</div>
             </div>
           </div>
           <div class="mt-8"><a href="#quick-quote" class="btn btn-primary btn-magnetic">Ask a Question • Get a Quote</a></div>
@@ -638,15 +448,13 @@
       <section class="py-16 md:py-20 panel text-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="section-h2 reveal">Built Strong. Built <span class="red">Right</span>. Every Time.</h2>
-          <p class="mt-3 lead reveal">
-            Call or text <a class="underline hover:text-white" href="tel:+18502072412">(850) 207-2412</a> — or click below.
-          </p>
+          <p class="mt-3 lead reveal">Call or text <a class="underline hover:text-white" href="tel:+18502072412">(850) 207-2412</a> — or click below.</p>
           <div class="mt-6"><a href="#quick-quote" class="btn btn-primary btn-magnetic">Request a Free Quote</a></div>
         </div>
       </section>
     </main>
 
-    <!-- Footer (same as homepage) -->
+    <!-- Footer -->
     <footer class="border-t border-[var(--red2)]/30">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8" aria-label="Footer">
         <div>
@@ -675,7 +483,7 @@
         <div>
           <h3 class="font-semibold text-[var(--red2)]">Social</h3>
           <ul class="mt-3 space-y-1 text-[var(--red2)]/85">
-            <li><a href="https://www.facebook.com/" class="hover:text-[var(--red)]">Facebook</a></li>
+            <li><a href="https://www.facebook.com/p/Edmonson-Contracting-LLC-61559296551842/" class="hover:text-[var(--red)]">Facebook</a></li>
           </ul>
         </div>
       </nav>
@@ -690,217 +498,125 @@
 
     <!-- JS -->
     <script>
-      // Year + mobile nav
-      const y = document.getElementById("y");
-      if (y) y.textContent = new Date().getFullYear();
-      const btn = document.getElementById("menuBtn");
-      const nav = document.getElementById("mobileNav");
-      if (btn && nav) {
-        btn.addEventListener("click", () => {
-          const ex = btn.getAttribute("aria-expanded") === "true";
-          btn.setAttribute("aria-expanded", !ex);
-          nav.classList.toggle("hidden");
+      const y=document.getElementById("y"); if(y) y.textContent=new Date().getFullYear();
+      const btn=document.getElementById("menuBtn"); const nav=document.getElementById("mobileNav");
+      if(btn&&nav){ btn.addEventListener("click",()=>{ const ex=btn.getAttribute("aria-expanded")==="true"; btn.setAttribute("aria-expanded",!ex); nav.classList.toggle("hidden"); }); }
+
+      const io=new IntersectionObserver((entries)=>entries.forEach((e)=>{ if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target);} }),{threshold:0.12});
+      document.querySelectorAll(".reveal").forEach((el)=>io.observe(el));
+
+      if(window.matchMedia('(pointer: fine)').matches){
+        document.querySelectorAll(".btn-magnetic").forEach((b)=>{ const r=20;
+          b.addEventListener("mousemove",(e)=>{ const m=b.getBoundingClientRect(); const x=((e.clientX-(m.left+m.width/2))/(m.width/2))*r; const y=((e.clientY-(m.top+m.height/2))/(m.height/2))*r; b.style.transform=`translate(${x*.1}px,${y*.1}px)`; });
+          b.addEventListener("mouseleave",()=> (b.style.transform="translate(0,0)"));
         });
       }
 
-      // Scroll reveal
-      const io = new IntersectionObserver(
-        (entries) => entries.forEach((e) => {
-          if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
-        }), { threshold: 0.12 }
-      );
-      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-
-      // Magnetic buttons — run only on precise pointers (no touch wobble)
-      if (window.matchMedia('(pointer: fine)').matches) {
-        document.querySelectorAll(".btn-magnetic").forEach((b) => {
-          const r = 20;
-          b.addEventListener("mousemove", (e) => {
-            const m = b.getBoundingClientRect();
-            const x = ((e.clientX - (m.left + m.width / 2)) / (m.width / 2)) * r;
-            const y = ((e.clientY - (m.top + m.height / 2)) / (m.height / 2)) * r;
-            b.style.transform = `translate(${x * 0.1}px,${y * 0.1}px)`;
-          });
-          b.addEventListener("mouseleave", () => (b.style.transform = "translate(0,0)"));
-        });
-      }
-
-      // HERO sparks — same as homepage
-      (function () {
-        const c = document.getElementById("sparks");
-        if (!c) return;
-        const ctx = c.getContext("2d");
-        let W, H, parts = [];
-        const R = Math.random;
-
-        function size() {
-          W = c.width = window.innerWidth;
-          H = c.height = document.querySelector(".hero").offsetHeight;
-        }
-        function seed() {
-          const COUNT = Math.round(Math.min(70, Math.max(28, (W * H) / 50000)));
-          parts = Array.from({ length: COUNT }, () => ({
-            x: R() * W,
-            y: R() * H,
-            vx: (R() - 0.5) * 0.06,
-            vy: -(0.15 + R() * 0.35),
-            r: 0.6 + R() * 1.4,
-            a: 0.28 + R() * 0.32,
-          }));
-        }
-        function step() {
-          ctx.clearRect(0, 0, W, H);
-          for (const p of parts) {
-            p.x += p.vx; p.y += p.vy;
-            if (p.y < -12 || p.x < -12 || p.x > W + 12) { p.x = R() * W; p.y = H + 12; }
-            const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 9);
-            g.addColorStop(0, `rgba(225,29,72,${p.a})`);
-            g.addColorStop(1, "rgba(225,29,72,0)");
-            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 9, 0, Math.PI * 2); ctx.fill();
-          }
-          requestAnimationFrame(step);
-        }
-        window.addEventListener("resize", () => { size(); seed(); });
-        size(); seed(); step();
+      (function(){
+        const c=document.getElementById("sparks"); if(!c) return;
+        const ctx=c.getContext("2d"); let W,H,parts=[]; const R=Math.random;
+        function size(){ W=c.width=window.innerWidth; H=c.height=document.querySelector(".hero").offsetHeight; }
+        function seed(){ const COUNT=Math.round(Math.min(70, Math.max(28, (W*H)/50000)));
+          parts=Array.from({length:COUNT},()=>({ x:R()*W, y:R()*H, vx:(R()-.5)*.06, vy:-(.15+R()*.35), r:.6+R()*1.4, a:.28+R()*.32 })); }
+        function step(){ ctx.clearRect(0,0,W,H);
+          for(const p of parts){ p.x+=p.vx; p.y+=p.vy; if(p.y<-12||p.x<-12||p.x>W+12){ p.x=R()*W; p.y=H+12; }
+            const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*9);
+            g.addColorStop(0,`rgba(225,29,72,${p.a})`); g.addColorStop(1,"rgba(225,29,72,0)");
+            ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*9,0,Math.PI*2); ctx.fill(); }
+          requestAnimationFrame(step); }
+        window.addEventListener("resize",()=>{ size(); seed(); }); size(); seed(); step();
       })();
 
-      // GLOBAL floating red dots — same as homepage
-      (function () {
-        const canvas = document.getElementById("floaters");
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
-        let W = 0, H = 0, parts = [];
-        const R = Math.random;
-
-        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; seed(true); }
-
-        function seed(seedAnywhere = false) {
-          const COUNT = Math.round(Math.min(70, Math.max(30, (W * H) / 50000)));
-          parts = Array.from({ length: COUNT }, () => ({
-            x: seedAnywhere ? R() * W : R() * W,
-            y: seedAnywhere ? R() * H : H + 12,
-            vx: (R() - 0.5) * 0.06,
-            vy: -(0.14 + R() * 0.3),
-            r: 0.6 + R() * 1.4,
-            a: 0.25 + R() * 0.35,
-          }));
-        }
-
-        function step() {
-          ctx.clearRect(0, 0, W, H);
-          for (const p of parts) {
-            p.x += p.vx; p.y += p.vy;
-            if (p.y < -14 || p.x < -14 || p.x > W + 14) {
-              p.x = R() * W; p.y = H + 14; p.vx = (R() - 0.5) * 0.06; p.vy = -(0.14 + R() * 0.3);
-            }
-            const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 9);
-            g.addColorStop(0, `rgba(225,29,72,${p.a})`); g.addColorStop(1, "rgba(225,29,72,0)");
-            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 9, 0, Math.PI * 2); ctx.fill();
-          }
-          requestAnimationFrame(step);
-        }
-
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        window.addEventListener("resize", resize);
-        resize(); step();
+      (function(){
+        const canvas=document.getElementById("floaters"); if(!canvas) return;
+        const ctx=canvas.getContext("2d"); let W=0,H=0,parts=[]; const R=Math.random;
+        function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; seed(true); }
+        function seed(seedAnywhere=false){ const COUNT=Math.round(Math.min(70, Math.max(30, (W*H)/50000)));
+          parts=Array.from({length:COUNT},()=>({ x:seedAnywhere?R()*W:R()*W, y:seedAnywhere?R()*H:H+12, vx:(R()-.5)*.06, vy:-(.14+R()*.3), r:.6+R()*1.4, a:.25+R()*.35 })); }
+        function step(){ ctx.clearRect(0,0,W,H);
+          for(const p of parts){ p.x+=p.vx; p.y+=p.vy; if(p.y<-14||p.x<-14||p.x>W+14){ p.x=R()*W; p.y=H+14; p.vx=(R()-.5)*.06; p.vy=-(.14+R()*.3); }
+            const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*9);
+            g.addColorStop(0,`rgba(225,29,72,${p.a})`); g.addColorStop(1,"rgba(225,29,72,0)");
+            ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*9,0,Math.PI*2); ctx.fill(); }
+          requestAnimationFrame(step); }
+        if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        window.addEventListener("resize",resize); resize(); step();
       })();
 
       // FAQ accordion
-      document.querySelectorAll(".faq-item").forEach((item) => {
-        item.querySelector(".faq-q").addEventListener("click", () => item.classList.toggle("open"));
-      });
+      document.querySelectorAll(".faq-item").forEach((item)=>{ item.querySelector(".faq-q").addEventListener("click",()=> item.classList.toggle("open")); });
 
       // Sticky subnav active link
-      const sections = ["fences","decks","pergolas","docks","repairs","faq","photos","quick-quote"]
-        .map(id => document.getElementById(id)).filter(Boolean);
-      const links = Array.from(document.querySelectorAll(".subnav a"));
-      const setActive = (id) => {
-        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${id}`));
-      };
-      const so = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) setActive(e.target.id);
-        });
-      }, { rootMargin: "-40% 0% -55% 0%", threshold: 0.01 });
-      sections.forEach(s => so.observe(s));
+      const sections=["fences","decks","pergolas","docks","repairs","faq","photos","quick-quote"].map(id=>document.getElementById(id)).filter(Boolean);
+      const links=Array.from(document.querySelectorAll(".subnav a"));
+      const setActive=(id)=>{ links.forEach(a=>a.classList.toggle("active", a.getAttribute("href")==="#"+id)); };
+      const so=new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) setActive(e.target.id); }); }, {rootMargin:"-40% 0% -55% 0%",threshold:.01});
+      sections.forEach(s=>so.observe(s));
 
-      // ===== Formspree AJAX (supports files) =====
-      const form = document.getElementById('servicesQuoteForm');
-      const status = document.getElementById('formStatus');
-      const submitBtn = document.getElementById('quoteSubmit');
-
-      if (form) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-
-          // Browser-side HTML5 validation
-          if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
+      // Formspree AJAX
+      const form=document.getElementById('servicesQuoteForm'); const status=document.getElementById('formStatus'); const submitBtn=document.getElementById('quoteSubmit');
+      if(form){ form.addEventListener('submit', async (e)=>{ e.preventDefault(); if(!form.checkValidity()){ form.reportValidity(); return; }
+        submitBtn.disabled=true; submitBtn.textContent='Sending…'; status.textContent='';
+        try{
+          const fd=new FormData(form);
+          const res=await fetch(form.action,{method:'POST',body:fd,headers:{'Accept':'application/json'}});
+          if(res.ok){
+            form.replaceWith(Object.assign(document.createElement('div'),{className:'card p-6 mt-6',innerHTML:`<h3 class="text-2xl font-semibold text-white">Thanks! We’ve got your request.</h3><p class="text-white/80 mt-2">We typically reply between <span class="red">7am–7pm</span> the same day.</p><p class="text-white/70 mt-2">If you want to add anything, text photos to <a class="underline" href="tel:+18502072412">(850) 207-2412</a>.</p>`}));
+          }else{
+            const data=await res.json().catch(()=>({})); throw new Error(data.error||'Something went wrong. Please try again or call us.');
           }
+        }catch(err){ status.textContent=err.message; } finally{ submitBtn.disabled=false; submitBtn.textContent='Start Your Quote'; }
+      });}
+    </script>
 
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Sending…';
-          status.textContent = '';
-
-          try {
-            const fd = new FormData(form);
-            const res = await fetch(form.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
-
-            if (res.ok) {
-              form.replaceWith(Object.assign(document.createElement('div'), {
-                className: 'card p-6 mt-6',
-                innerHTML: `
-                  <h3 class="text-2xl font-semibold text-white">Thanks! We’ve got your request.</h3>
-                  <p class="text-white/80 mt-2">We typically reply between <span class="red">7am–7pm</span> the same day.</p>
-                  <p class="text-white/70 mt-2">If you want to add anything, text photos to <a class="underline" href="tel:+18502072412">(850) 207-2412</a>.</p>
-                `
-              }));
-            } else {
-              const data = await res.json().catch(() => ({}));
-              throw new Error(data.error || 'Something went wrong. Please try again or call us.');
-            }
-          } catch (err) {
-            status.textContent = err.message;
-          } finally {
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = 'Start Your Quote';
-            }
-          }
-        });
+    <!-- Schema: LocalBusiness with OfferCatalog + hasMap -->
+    <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"LocalBusiness",
+        "@id":"https://edmonsoncontracting.com/#business",
+        "name":"Edmonson Contracting LLC",
+        "url":"https://edmonsoncontracting.com/services.html",
+        "image":"/images/og-hero.jpg",
+        "logo":"/images/logo-light.png",
+        "telephone":"+1-850-207-2412",
+        "email":"Edmonsoncontractingllc@gmail.com",
+        "address":{
+          "@type":"PostalAddress",
+          "streetAddress":"7309 Brickyard Rd",
+          "addressLocality":"Molino",
+          "addressRegion":"FL",
+          "postalCode":"32577",
+          "addressCountry":"US"
+        },
+        "areaServed":["Molino","Pensacola","Escambia County","Cantonment","Pace","Milton","Beulah","Gulf Breeze"],
+        "openingHours":"Mo-Su 07:00-19:00",
+        "hasMap":"https://www.google.com/maps?q=7309+Brickyard+Rd,+Molino,+FL+32577",
+        "hasOfferCatalog":{
+          "@type":"OfferCatalog",
+          "name":"Construction Services",
+          "itemListElement":[
+            {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fences"}},
+            {"@type":"Offer","itemOffered":{"@type":"Service","name":"Decks"}},
+            {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pergolas & Patios"}},
+            {"@type":"Offer","itemOffered":{"@type":"Service","name":"Docks & Waterfront"}},
+            {"@type":"Offer","itemOffered":{"@type":"Service","name":"Repairs & Upgrades"}}
+          ]
+        },
+        "sameAs":["https://www.facebook.com/p/Edmonson-Contracting-LLC-61559296551842/"]
       }
     </script>
 
-    <!-- Schema (Service w/ OfferCatalog) -->
+    <!-- Schema: Organization (supporting brand signals) -->
     <script type="application/ld+json">
       {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Edmonson Contracting LLC",
-        "url": "https://www.edmonsoncontracting.com/services.html",
-        "image": "/images/og-hero.jpg",
-        "telephone": "+1-850-207-2412",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "7309 Brickyard Rd",
-          "addressLocality": "Molino",
-          "addressRegion": "FL",
-          "postalCode": "32577",
-          "addressCountry": "US"
-        },
-        "areaServed": ["Molino","Pensacola","Escambia County","Cantonment","Pace","Milton","Beulah","Gulf Breeze"],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Construction Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fences" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Decks" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pergolas & Patios" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Docks & Waterfront" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Repairs & Upgrades" } }
-          ]
-        }
+        "@context":"https://schema.org",
+        "@type":"Organization",
+        "@id":"https://edmonsoncontracting.com/#org",
+        "name":"Edmonson Contracting LLC",
+        "url":"https://edmonsoncontracting.com/",
+        "logo":{ "@type":"ImageObject", "url":"/images/logo-light.png" },
+        "sameAs":["https://www.facebook.com/p/Edmonson-Contracting-LLC-61559296551842/"]
       }
     </script>
   </body>
