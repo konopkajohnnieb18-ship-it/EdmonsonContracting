@@ -5,14 +5,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Our Work | Edmonson Contracting LLC — Fences, Decks, Pergolas, Patios, Docks</title>
-    <meta name="description" content="See Edmonson Contracting projects across Molino, Pensacola & Escambia County: straight fence lines, rock-solid decks, shade pergolas, patios and waterfront work. Photos, materials, and case studies." />
-    <link rel="canonical" href="https://www.edmonsoncontracting.com/our-work.html" />
+    <meta name="description" content="See Edmonson Contracting projects across Molino, Pensacola & Escambia County: straight fence lines, rock-solid decks, pergolas, patios, and waterfront work. Photos and case studies built for Florida weather." />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Canonical / hreflang -->
+    <link rel="canonical" href="https://edmonsoncontracting.com/our-work.html" />
+    <link rel="alternate" hreflang="en-us" href="https://edmonsoncontracting.com/our-work.html" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Our Work — Edmonson Contracting LLC" />
     <meta property="og:description" content="Gallery and case studies: fences, decks, pergolas, patios and docks built strong for Florida weather." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/og-hero.jpg" />
+    <meta property="og:url" content="https://edmonsoncontracting.com/our-work.html" />
+    <meta property="og:image" content="https://edmonsoncontracting.com/images/og-hero.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Our Work — Edmonson Contracting LLC" />
+    <meta name="twitter:description" content="Gallery and case studies: fences, decks, pergolas, patios and docks built strong for Florida weather." />
+    <meta name="twitter:image" content="https://edmonsoncontracting.com/images/og-hero.jpg" />
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,16 +35,12 @@
       :root{
         --ink:#0a0a0b;--ink2:#0f1012;--text:#fff;
         --red:#b30000;--red2:#e11d48;--ring:rgba(225,29,72,.4);
-        /* Hint native controls to dark on mobile */
         color-scheme: dark;
       }
-
-      /* ====== GLOBAL LAYOUT SAFEGUARDS (fix horizontal drag/scroll) ====== */
+      /* ====== GLOBAL LAYOUT SAFEGUARDS ====== */
       *,*::before,*::after{box-sizing:border-box}
-      html,body{max-width:100%; overflow-x:hidden;} /* <- hard clamp */
-      /* clip any accidental overflow from full-bleed sections */
+      html,body{max-width:100%; overflow-x:hidden;}
       header,footer,.hero,.panel,.panel-dark{overflow-x:clip}
-      /* canvases/images as block to avoid inline gaps pushing layout */
       canvas,img{display:block}
 
       html{scroll-behavior:smooth}
@@ -147,7 +154,7 @@
     <main id="main" role="main">
       <!-- Hero (no photo, just sparks + gradients) -->
       <section class="hero">
-        <canvas id="sparks" class="sparks"></canvas>
+        <canvas id="sparks" class="sparks" aria-hidden="true"></canvas>
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-32 pb-12">
           <div class="max-w-3xl">
             <p class="kicker">Gallery • Case Studies • Proof</p>
@@ -171,11 +178,11 @@
           <h2 class="section-h2">Before & <span class="red">After</span></h2>
           <p class="text-white/80 mt-2">Drag—or just move across—to reveal the result.</p>
 
-          <div class="mt-6 ba reveal" id="ba-top" style="height:380px">
-            <img src="/img/1.jpg" alt="Before" />
-            <img class="after" src="/img/2.jpg" alt="After" />
-            <div class="handle"></div>
-            <div class="dot"></div>
+          <div class="mt-6 ba reveal" id="ba-top" style="height:380px" aria-label="Before and After comparison">
+            <img src="/img/1.jpg" alt="Before — original condition" />
+            <img class="after" src="/img/2.jpg" alt="After — completed project" />
+            <div class="handle" aria-hidden="true"></div>
+            <div class="dot" aria-hidden="true"></div>
           </div>
         </div>
         <div class="rail mt-12"></div>
@@ -187,84 +194,84 @@
           <h2 class="section-h2 reveal">Project <span class="red">Gallery</span></h2>
           <p class="mt-2 text-white/80 reveal">Browse by type. Tap any photo to open the lightbox.</p>
 
-          <div class="mt-6 flex flex-wrap gap-2">
-            <button class="pill active" data-filter="all">All</button>
-            <button class="pill" data-filter="fence">Fences</button>
-            <button class="pill" data-filter="deck">Decks</button>
-            <button class="pill" data-filter="pergola">Pergolas & Patios</button>
-            <button class="pill" data-filter="dock">Docks</button>
-            <button class="pill" data-filter="repair">Repairs</button>
+          <div class="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Filter gallery by service type">
+            <button class="pill active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="pill" data-filter="fence" role="tab" aria-selected="false">Fences</button>
+            <button class="pill" data-filter="deck" role="tab" aria-selected="false">Decks</button>
+            <button class="pill" data-filter="pergola" role="tab" aria-selected="false">Pergolas & Patios</button>
+            <button class="pill" data-filter="dock" role="tab" aria-selected="false">Docks</button>
+            <button class="pill" data-filter="repair" role="tab" aria-selected="false">Repairs</button>
           </div>
 
           <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="grid">
             <!-- your .webp images -->
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2916.webp" alt="Privacy fence run" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2916.webp" alt="Privacy fence run aligned along yard" />
               <figcaption class="p-3 text-sm text-white/80">Privacy fence — straight alignment</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2918.webp" alt="Long fence section" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2918.webp" alt="Long privacy fence section on level ground" />
               <figcaption class="p-3 text-sm text-white/80">Long privacy run — tidy spacing</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2915.webp" alt="Porch/stairs detail" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2915.webp" alt="Porch access with steps and rails" />
               <figcaption class="p-3 text-sm text-white/80">Porch access — clean edges</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="deck">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2577.webp" alt="Deck and porch" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2577.webp" alt="Deck and porch with uniform boards" />
               <figcaption class="p-3 text-sm text-white/80">Deck/porch combo — uniform boards</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="deck">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2332.webp" alt="Deck surface" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2332.webp" alt="Deck surface close-up with clean miters" />
               <figcaption class="p-3 text-sm text-white/80">Deck surface — clean miters</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="pergola">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2917.webp" alt="Pergola structure" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2917.webp" alt="Pergola providing shade across patio" />
               <figcaption class="p-3 text-sm text-white/80">Pergola shade — sun-path slats</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="pergola">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2579.webp" alt="Patio steps" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2579.webp" alt="Patio steps with neat transitions" />
               <figcaption class="p-3 text-sm text-white/80">Patio steps — neat transitions</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="repair">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2922.webp" alt="Gate hardware upgrade" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2922.webp" alt="Gate hardware upgrade and rehang" />
               <figcaption class="p-3 text-sm text-white/80">Gate re-hang & hardware upgrade</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2458.webp" alt="Site prep" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2458.webp" alt="Organized materials prepared for site work" />
               <figcaption class="p-3 text-sm text-white/80">Site prep — organized materials</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2567.webp" alt="Gate alignment" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2567.webp" alt="Square and true fence gate alignment" />
               <figcaption class="p-3 text-sm text-white/80">Gate alignment — square & true</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2568.webp" alt="Handrail detail" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2568.webp" alt="Handrail detail for safe access" />
               <figcaption class="p-3 text-sm text-white/80">Handrail detail — safe access</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="dock">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_5479.webp" alt="Waterfront" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_5479.webp" alt="Waterfront deck boards ready for coastal conditions" />
               <figcaption class="p-3 text-sm text-white/80">Waterfront details — corrosion-ready</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="fence">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_1925.webp" alt="Slope run" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_1925.webp" alt="Fence stepped across sloped yard" />
               <figcaption class="p-3 text-sm text-white/80">Slope solution — stepped panels</figcaption>
             </figure>
 
             <figure class="card overflow-hidden cursor-pointer group reveal" data-cat="pergola">
-              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2910.webp" alt="Covered patio" />
+              <img loading="lazy" class="w-full h-48 object-cover group-hover:scale-[1.03] transition" src="/img/IMG_2910.webp" alt="Covered patio for all-weather outdoor use" />
               <figcaption class="p-3 text-sm text-white/80">Covered patio — all-weather use</figcaption>
             </figure>
           </div>
@@ -285,22 +292,22 @@
             <div class="space-y-3">
               <h3 class="text-2xl font-semibold">Privacy Fence with Cap & Gate Upgrade — Molino, FL</h3>
               <p class="text-white/80">Homeowner wanted <span class="red">privacy</span> and a straight line down a sloped yard. We set posts deeper than minimum, used corrosion-resistant fasteners, and finished with a clean cap & trim profile. Gate got upgraded hinges and latch to prevent sagging.</p>
-              <ul class="text-white/80 text-sm space-y-1">
+              <ul class="text-white/80 text-sm space-y-1" aria-label="Project details">
                 <li>• Material: PT pine, concrete footings</li>
                 <li>• Length: ~180 ft • Height: 6 ft</li>
                 <li>• Turnaround: 2 days on site</li>
               </ul>
               <a href="/#quote" class="btn btn-primary btn-magnetic">Get a Fence Quote</a>
             </div>
-            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2916.webp" alt="Cap & trim privacy fence" />
+            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2916.webp" alt="Cap & trim privacy fence — finished result" />
           </article>
 
           <article class="mt-8 grid lg:grid-cols-2 gap-8 items-start card p-6 reveal">
-            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2577.webp" alt="Deck boards close-up" />
+            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2577.webp" alt="Deck boards close-up with uniform spacing" />
             <div class="space-y-3">
               <h3 class="text-2xl font-semibold">Low-Maintenance Deck Upgrade — Pensacola, FL</h3>
               <p class="text-white/80">Replaced an aging wood platform with upgraded materials. Hidden fasteners, proper spacing, and stair lighting make it feel solid underfoot and safer at night.</p>
-              <ul class="text-white/80 text-sm space-y-1">
+              <ul class="text-white/80 text-sm space-y-1" aria-label="Project details">
                 <li>• Composite/treated boards, aluminum rail</li>
                 <li>• Features: Hidden fasteners, step lighting</li>
                 <li>• Turnaround: 3 days on site</li>
@@ -313,14 +320,14 @@
             <div class="space-y-3">
               <h3 class="text-2xl font-semibold">Pergola & Patio with Drainage — Beulah, FL</h3>
               <p class="text-white/80">We set slat angles to match the sun path for afternoon shade and graded the base for <span class="red">proper drainage</span>. Privacy screen + low-voltage lighting finish the space.</p>
-              <ul class="text-white/80 text-sm space-y-1">
+              <ul class="text-white/80 text-sm space-y-1" aria-label="Project details">
                 <li>• Pavers on compacted base, polymeric sand</li>
                 <li>• Pergola with metal accents</li>
                 <li>• Turnaround: 3–4 days</li>
               </ul>
               <a href="/#quote" class="btn btn-primary btn-magnetic">Get a Pergola/Patio Quote</a>
             </div>
-            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2917.webp" alt="Pergola over patio with lighting" />
+            <img loading="lazy" class="rounded-lg w-full h-72 object-cover" src="/img/IMG_2917.webp" alt="Pergola over patio with lighting at dusk" />
           </article>
         </div>
         <div class="rail mt-16"></div>
@@ -340,7 +347,7 @@
     <footer class="border-t border-[var(--red2)]/30">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8" aria-label="Footer">
         <div>
-           <img src="/img/EDLOGO.png" alt="Edmonson Contracting logo" class="h-9 w-auto" />
+          <img src="/img/EDLOGO.png" alt="Edmonson Contracting logo" class="h-9 w-auto" />
           <address class="not-italic text-[var(--red2)]/80 mt-3">7309 Brickyard Rd<br />Molino, FL 32577</address>
           <p class="text-[var(--red2)]/80 mt-1">Hours: 7am–7pm daily</p>
           <p class="mt-2"><a href="tel:+18502072412" class="hover:text-[var(--red)] text-[var(--red2)]">(850) 207-2412</a></p>
@@ -482,19 +489,19 @@
         lbImg.src=images[idx];
         lb.classList.add("open");
         lb.setAttribute("aria-hidden","false");
-        document.body.style.overflow='hidden';   // lock scroll
+        document.body.style.overflow='hidden';
       }
       function closeLB(){
         lb.classList.remove("open");
         lb.setAttribute("aria-hidden","true");
-        document.body.style.overflow='';         // unlock scroll
+        document.body.style.overflow='';
       }
       function prev(){idx=(idx-1+images.length)%images.length; lbImg.src=images[idx];}
       function next(){idx=(idx+1)%images.length; lbImg.src=images[idx];}
       closeBtn.addEventListener("click",closeLB); prevBtn.addEventListener("click",prev); nextBtn.addEventListener("click",next);
       document.addEventListener("keydown",e=>{if(!lb.classList.contains("open")) return; if(e.key==="Escape") closeLB(); if(e.key==="ArrowLeft") prev(); if(e.key==="ArrowRight") next();});
 
-      // Before/After slider — drag OR simple hover-move support
+      // Before/After slider
       function attachBA(id){
         const wrap=document.getElementById(id); if(!wrap) return;
         const after=wrap.querySelector(".after"); const handle=wrap.querySelector(".handle"); const dot=wrap.querySelector(".dot");
@@ -509,18 +516,74 @@
         wrap.addEventListener("pointerdown",e=>{down=true; move(e); wrap.setPointerCapture(e.pointerId);});
         wrap.addEventListener("pointermove",e=>{if(down) move(e);});
         wrap.addEventListener("pointerup",()=>down=false);
-        // also update on simple hover/move for desktop
         wrap.addEventListener("mousemove",e=>{if(!down) move(e);});
-        // center on load & on resize
         const center=()=>set(wrap.getBoundingClientRect().left + wrap.clientWidth/2);
         window.addEventListener("resize",center); center();
       }
       attachBA("ba-top");
     </script>
 
-    <!-- Schema -->
+    <!-- Schema: WebSite (with SearchAction), LocalBusiness, CollectionPage + Breadcrumbs -->
     <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"CollectionPage","name":"Our Work - Edmonson Contracting LLC","url":"https://www.edmonsoncontracting.com/our-work.html","about":["Fences","Decks","Pergolas","Patios","Docks"],"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.edmonsoncontracting.com/"},{"@type":"ListItem","position":2,"name":"Our Work","item":"https://www.edmonsoncontracting.com/our-work.html"}]},"hasPart":[{"@type":"ImageGallery","name":"Project Gallery"}]}
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://edmonsoncontracting.com/#website",
+        "url": "https://edmonsoncontracting.com/",
+        "name": "Edmonson Contracting LLC",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://edmonsoncontracting.com/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"LocalBusiness",
+        "@id":"https://edmonsoncontracting.com/#business",
+        "name":"Edmonson Contracting LLC",
+        "url":"https://edmonsoncontracting.com",
+        "image":"https://edmonsoncontracting.com/images/og-hero.jpg",
+        "logo":"https://edmonsoncontracting.com/images/logo-light.png",
+        "telephone":"+1-850-207-2412",
+        "email":"Edmonsoncontractingllc@gmail.com",
+        "address":{
+          "@type":"PostalAddress",
+          "streetAddress":"7309 Brickyard Rd",
+          "addressLocality":"Molino",
+          "addressRegion":"FL",
+          "postalCode":"32577",
+          "addressCountry":"US"
+        },
+        "openingHours":"Mo-Su 07:00-19:00",
+        "priceRange":"$$",
+        "areaServed":[
+          "Molino","Pensacola","Escambia County","Cantonment","Pace","Milton","Beulah","Gulf Breeze"
+        ],
+        "sameAs": ["https://www.facebook.com/"]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"CollectionPage",
+        "@id":"https://edmonsoncontracting.com/our-work.html#collection",
+        "name":"Our Work - Edmonson Contracting LLC",
+        "url":"https://edmonsoncontracting.com/our-work.html",
+        "about":["Fences","Decks","Pergolas","Patios","Docks"],
+        "hasPart":[{"@type":"ImageGallery","name":"Project Gallery"}],
+        "breadcrumb":{
+          "@type":"BreadcrumbList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Home","item":"https://edmonsoncontracting.com/"},
+            {"@type":"ListItem","position":2,"name":"Our Work","item":"https://edmonsoncontracting.com/our-work.html"}
+          ]
+        },
+        "isPartOf":{"@id":"https://edmonsoncontracting.com/#website"},
+        "mainEntityOfPage":{"@id":"https://edmonsoncontracting.com/#business"}
+      }
     </script>
   </body>
 </html>
